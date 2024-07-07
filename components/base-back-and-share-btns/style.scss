@@ -1,0 +1,150 @@
+.base-back-and-share-btns {
+	--short-width: 72px;
+	--short-height: 72px;
+	width: var(--short-width);
+	height: var(--short-height);
+	transition: width 0.2s ease-in-out;
+
+	@include hover {
+		&:hover {
+			width: 100%;
+		}
+
+		&:hover .back__text,
+		&:hover .share__text {
+			opacity: 1;
+		}
+	}
+}
+
+.back {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: var(--color-third);
+
+	&::before {
+		content: '';
+		flex-shrink: 0;
+		width: var(--short-width);
+		height: var(--short-height);
+		background: get-svg-icon('line-arrow-back', 'color-fifth') no-repeat;
+		background-position: center;
+		background-size: 24px;
+	}
+
+	&__text {
+		flex-shrink: 0;
+		color: var(--color-fifth);
+		position: relative;
+		top: 2px;
+		opacity: 0;
+		font-size: 26px;
+		font-weight: 500;
+		line-height: 1;
+		padding-right: 24px;
+		margin-left: -7px;
+		letter-spacing: -0.02em;
+		transition: opacity 0.2s ease-in-out;
+	}
+}
+
+.share {
+	position: relative;
+
+	&__inner {
+		position: relative;
+		z-index: 1;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		background: var(--color-seventh);
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			flex-shrink: 0;
+			width: var(--short-width);
+			height: var(--short-height);
+			background: get-svg-icon('share', 'color-eighth') no-repeat;
+			background-position: center;
+			background-size: 24px;
+		}
+	}
+
+	&.active & {
+		&__inner {
+			background: var(--color-eighth);
+
+			&::before {
+				background-image: get-svg-icon('share', 'color-fifth');
+			}
+		}
+
+		&__text {
+			color: var(--color-fifth);
+		}
+	}
+
+	&__text {
+		flex-shrink: 0;
+		color: var(--color-eighth);
+		opacity: 0;
+		font-size: 26px;
+		font-weight: 500;
+		line-height: 1;
+		padding-right: 24px;
+		margin-left: -7px;
+		letter-spacing: -0.02em;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	&__list {
+		position: absolute;
+		top: 0;
+		left: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		gap: 34px;
+		padding: 0 28px;
+		background: var(--color-seventh);
+		transform: translateX(-100%);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&.active &__list {
+		transform: translateX(0);
+	}
+
+	&__link,
+	&__copy {
+		width: 28px;
+		height: 28px;
+	}
+
+	&__link {
+		--fill: var(--color-third);
+
+		@include hover {
+			&:hover {
+				--fill: var(--color-eighth);
+			}
+		}
+	}
+
+	&__copy {
+		--stroke: var(--color-third);
+
+		@include hover {
+			&:hover {
+				--stroke: var(--color-eighth);
+			}
+		}
+	}
+}

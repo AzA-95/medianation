@@ -1,0 +1,178 @@
+.base-reviews-client {
+	padding: var(--vertical-indent) 0;
+	background: var(--color-tenth);
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 64px;
+}
+
+.title {
+	color: var(--color-fifth);
+	font-size: 72px;
+	font-weight: 500;
+	line-height: 1.11;
+	letter-spacing: -0.02em;
+	margin: 0;
+}
+
+.slider-controls {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	margin-left: 20px;
+
+	&__control {
+		& + & {
+			margin-left: 48px;
+		}
+	}
+}
+
+.clients {
+	margin-bottom: 64px;
+
+	.swiper:not(.swiper-initialized) {
+		.swiper-slide {
+			margin-right: 40px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.swiper-slide {
+		cursor: pointer;
+		width: auto;
+		opacity: 0.3;
+		padding-bottom: 6px;
+		border-bottom: 2px solid transparent;
+
+		@include lg-min {
+			&:not(:last-child) {
+				margin-right: 40px !important;
+			}
+		}
+
+		// класс swper-slide-active не коректно позицианирутся при первой загрузке в(моб)
+		// и временами также не коректно срабатывает поэтому используем кстомный активный класс
+		&.custom-active {
+			opacity: 1;
+			border-color: var(--color-eighth);
+		}
+
+		@include hover {
+			&:hover {
+				border-color: var(--color-eighth);
+			}
+		}
+	}
+}
+
+.client {
+	width: 160px;
+	height: 64px;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+@include lg {
+	.head {
+		margin-bottom: 40px;
+	}
+
+	.slider-controls {
+		&__control {
+			& + & {
+				margin-left: 40px;
+			}
+		}
+	}
+
+	.clients {
+		margin-bottom: 40px;
+	}
+}
+
+@include md {
+	.head {
+		margin-bottom: 24px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 1.23;
+	}
+
+	.slider-controls {
+		&__control {
+			&:nth-child(1) {
+				display: none;
+			}
+
+			& + & {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.clients {
+		margin-bottom: 24px;
+	}
+}
+
+@include sm {
+	.base-reviews-client {
+		position: relative;
+
+		&.has-slider-controls {
+			padding-bottom: 104px;
+		}
+	}
+
+	.head {
+		margin-bottom: 40px;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 1.2;
+	}
+
+	.slider-controls {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 40px;
+		width: 100%;
+		justify-content: space-between;
+		padding: 0 var(--horizontal-indent);
+		margin-left: 0;
+
+		&__control {
+			& + & {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.clients {
+		margin: 0 calc(var(--horizontal-indent) * -1) 40px;
+
+		:deep(.swiper) {
+			padding: 0 var(--horizontal-indent);
+		}
+	}
+}

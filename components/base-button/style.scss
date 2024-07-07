@@ -1,0 +1,168 @@
+.base-button {
+	position: relative;
+	appearance: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--btn-width, auto);
+	min-height: var(--btn-min-height, auto);
+	color: var(--color-fifth);
+	font-size: var(--btn-font-size, 13px);
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: 0.02em;
+	text-transform: var(--text-transform, uppercase);
+	text-decoration: none;
+	vertical-align: top;
+	padding: var(--btn-padding, 10px);
+	border-radius: 0;
+	border: none;
+	overflow: hidden;
+	transition: 0.3s;
+	background: var(--color-eighth);
+
+	&:focus {
+		outline: none;
+	}
+
+	&:not(&_without-default-hover):not(&_sliding-hover) {
+		@include hover {
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	> span {
+		position: relative;
+		z-index: 1;
+	}
+
+	.right-icon {
+		margin-left: 4px;
+	}
+
+	&.loading {
+		position: relative;
+
+		> span {
+			opacity: 0;
+		}
+
+		> .loading-icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			height: 40%;
+			transform: translate(-50%, -50%);
+			// Костыль по аспект ратио по высоте.
+			// Можно было бы использовать aspect-ratio но он еще не хорошо подерживается
+			writing-mode: vertical-lr;
+
+			&::after {
+				content: '';
+				// Костыль по аспект ратио по высоте.
+				display: block;
+				padding-left: 100%;
+				background: get-svg-icon('loading', 'color-fifth') no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+
+	&_sliding-hover:not(.has-theme) {
+		&::before {
+			content: '';
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--color-forty);
+			transform: translate(-100%);
+			transition: 0.3s ease-in-out;
+		}
+
+		@include hover {
+			&:hover::before {
+				opacity: 1;
+				transform: translate(0);
+			}
+		}
+	}
+
+	&_theme-second {
+		background: var(--color-twenty-first);
+	}
+
+	&_theme-third {
+		background: var(--color-forty-first);
+	}
+
+	&_theme-fourth {
+		background: rgba(var(--color-fifth-rgb), 0.2);
+	}
+
+	&_theme-fifth {
+		background: var(--color-third);
+	}
+
+	&_theme-sixth {
+		color: var(--color-third);
+		background: var(--color-fifth);
+
+		@include hover {
+			&:hover {
+				background: var(--color-seventh);
+			}
+		}
+	}
+
+	&_theme-seventh {
+		position: relative;
+		// fallback color
+		color: var(--color-third);
+		border: 2px solid var(--color-fifth);
+		background: transparent;
+
+		& > span {
+			width: 100%;
+			background: linear-gradient(
+				45deg,
+				var(--color-eighth) 50%,
+				var(--color-fifth) 50%
+			);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(
+				45deg,
+				var(--color-fifth) 50%,
+				transparent 50%
+			);
+		}
+
+		& > span,
+		&::after {
+			background-size: 300%;
+			background-position: 100%;
+			transition: 1s;
+		}
+
+		&:hover > span,
+		&:hover::after {
+			background-position: 0;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"root": true,
+	"extends": ["@nuxtjs/eslint-config-typescript", "eslint-config-prettier"],
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"rules": {
+		"vue/no-v-html": "off"
+	},
+	"overrides": [
+		{
+			// Отключаем правило для компонентов которые находятся в components/any-folder/
+			"files": ["components/**/*.vue"],
+			"excludedFiles": "components/*.vue",
+			"rules": {
+				"vue/multi-word-component-names": "off"
+			}
+		},
+		{
+			"files": ["app.vue", "pages/**/*.vue"],
+			"rules": {
+				"vue/no-multiple-template-root": "off"
+			}
+		}
+	]
+}

@@ -1,0 +1,25 @@
+[data-animate] {
+	transition-timing-function: ease;
+	transition-delay: var(--animation-delay, 0);
+	transition-duration: var(--animation-duration, 1s);
+}
+
+[data-animate='fade-up'] {
+	opacity: 0;
+	transform: translate3d(0, 100px, 0);
+	transition-property: opacity, transform;
+
+	&[data-animate-inited] {
+		opacity: 1;
+		transform: translateZ(0);
+	}
+}
+
+[data-animate='scale-up'] {
+	transform: translateZ(80px) translateY(80px) scale(0.1);
+	transition-property: transform;
+
+	&[data-animate-inited] {
+		transform: translateZ(0px) translateY(0px) rotateX(0deg) scale(1);
+	}
+}

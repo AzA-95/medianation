@@ -1,0 +1,56 @@
+.base-play-icon {
+	position: relative;
+	cursor: pointer;
+	width: 108px;
+	height: 138px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: get-svg-icon('play', 'color-eighth') no-repeat;
+	background-size: contain;
+	transition: 0.5s ease-in-out;
+
+	&:not(&_without-hover) {
+		@include hover {
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+
+		&:active {
+			transform: scale(0.7);
+		}
+	}
+}
+
+.time {
+	color: var(--color-fifth);
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	transform: translateX(-50%);
+}
+
+@include md {
+	.base-play-icon {
+		width: 88px;
+		height: 112px;
+	}
+
+	.time {
+		font-size: 12px;
+		transform: translateX(-35%);
+	}
+}
+
+@include sm {
+	.base-play-icon {
+		width: 69px;
+		height: 88px;
+	}
+
+	.time {
+		font-size: 10px;
+		transform: translateX(-35%);
+	}
+}

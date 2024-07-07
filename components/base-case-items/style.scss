@@ -1,0 +1,26 @@
+@include sm-min {
+	.slider {
+		:deep() {
+			.swiper-wrapper {
+				display: block;
+			}
+		}
+	}
+}
+
+@include sm {
+	.slider {
+		:deep() {
+			.swiper-slide {
+				width: 90%;
+				flex-grow: 1;
+				height: auto;
+				opacity: 0.3;
+
+				&-active {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

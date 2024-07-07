@@ -1,0 +1,72 @@
+.base-share-socials-blog {
+	max-width: 1080px; // width equal to .t-short-text in component base-text-default
+	margin: 0 auto 94px;
+}
+
+.title {
+	color: var(--color-second);
+	font-size: 17px;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	margin-bottom: 24px;
+}
+
+.social-links {
+	display: flex;
+	gap: 34px;
+
+	&__link,
+	&__copy {
+		width: 28px;
+		height: 28px;
+	}
+
+	&__link {
+		--fill: var(--color-third);
+
+		@include hover {
+			&:hover {
+				--fill: var(--color-eighth);
+			}
+		}
+	}
+
+	&__copy {
+		--stroke: var(--color-third);
+
+		@include hover {
+			&:hover {
+				--stroke: var(--color-eighth);
+			}
+		}
+	}
+}
+
+@include md {
+	.base-share-socials-blog {
+		padding: 0 var(--horizontal-indent);
+		margin-bottom: 70px;
+	}
+}
+
+@include sm {
+	.base-share-socials-blog {
+		padding: 0 var(--horizontal-indent);
+		margin-bottom: 50px;
+	}
+
+	.title {
+		font-size: 15px;
+		margin-bottom: 12px;
+	}
+
+	.social-links {
+		gap: 26px;
+
+		&__link,
+		&__copy {
+			width: 22px;
+			height: 22px;
+		}
+	}
+}

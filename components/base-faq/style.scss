@@ -1,0 +1,149 @@
+.base-faq {
+	padding: var(--vertical-indent) 0;
+	background: var(--color-fifth);
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	letter-spacing: -0.02em;
+	margin: 0 0 30px;
+}
+
+.accordion {
+	&-title {
+		cursor: pointer;
+		position: relative;
+		color: var(--color-first);
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		padding: 32px 82px 32px 32px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 72px;
+			height: 100%;
+			background: var(--color-fourteenth)
+				get-svg-icon('arrow-down-round', 'color-first') no-repeat;
+			background-position: center;
+			background-size: 10px auto;
+			transition: background-color 0.2s ease-in-out;
+		}
+
+		&:hover {
+			background: var(--color-twentieth);
+		}
+	}
+
+	&.active &-title {
+		color: var(--color-eighth);
+		background: var(--color-sixth);
+
+		&::after {
+			transform: scaleY(-1);
+			background-color: var(--color-eighth);
+			background-image: get-svg-icon('arrow-down-round', 'color-fifth');
+		}
+	}
+
+	&-content-wrap {
+		max-height: 0;
+		overflow: hidden;
+		background: var(--color-sixth);
+		transition: max-height 0.2s ease-in-out;
+	}
+
+	&.active &-content-wrap {
+		max-height: var(--max-height, none);
+	}
+
+	&-content {
+		padding: 40px 32px;
+	}
+
+	&-text {
+		color: var(--color-second);
+		font-size: 20px;
+		line-height: 1.7;
+		letter-spacing: -0.01em;
+		max-width: 1124px;
+	}
+}
+
+@include lg {
+	.base-faq {
+		padding: var(--vertical-indent) 0 48px;
+	}
+
+	.accordion {
+		&-text {
+			max-width: 800px;
+		}
+	}
+}
+
+@include md {
+	.title {
+		font-size: 52px;
+		line-height: 56px;
+	}
+
+	.accordions {
+		margin: 0 calc(var(--horizontal-indent) * -1);
+	}
+
+	.accordion {
+		&-title {
+			font-size: 28px;
+			padding: 24px 82px 24px var(--horizontal-indent);
+		}
+
+		&-content {
+			padding: 40px var(--horizontal-indent);
+		}
+
+		&-text {
+			font-size: 18px;
+			max-width: none;
+		}
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		margin-bottom: 16px;
+	}
+
+	.accordions {
+		margin: 0 calc(var(--horizontal-indent) * -1);
+	}
+
+	.accordion {
+		&-title {
+			font-size: 19px;
+			padding: 16px 65px 16px var(--horizontal-indent);
+
+			&::after {
+				width: 56px;
+			}
+		}
+
+		&-content {
+			padding: 40px var(--horizontal-indent);
+		}
+
+		&-text {
+			font-size: 15px;
+			max-width: none;
+		}
+	}
+}

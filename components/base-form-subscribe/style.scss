@@ -1,0 +1,85 @@
+.base-form-subscribe {
+	position: relative;
+	width: 100%; // не удалять нужен для полной ширины блока(Если у родителя задан display: flex)
+	padding: 48px 54px;
+	background: var(--color-eighth);
+}
+
+.success {
+	color: var(--color-fifth);
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	&__title {
+		font-size: 42px;
+		line-height: 1.3;
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		margin-bottom: 40px;
+	}
+
+	&__text {
+		font-size: 32px;
+		letter-spacing: -0.03em;
+	}
+}
+
+.title {
+	color: var(--color-fifth);
+	font-size: 38px;
+	font-weight: 500;
+	line-height: 42px;
+	letter-spacing: -0.02em;
+	margin-bottom: 28px;
+}
+
+.text {
+	color: var(--color-fifth);
+	font-size: 17px;
+	line-height: 26px;
+	letter-spacing: -0.01em;
+	margin-bottom: 41px;
+}
+
+@include md-max {
+	.text {
+		margin-bottom: 30px;
+	}
+}
+
+@include sm {
+	.base-form-subscribe {
+		padding: 32px 25px;
+	}
+
+	.success {
+		min-height: 200px;
+
+		&__title {
+			font-size: 30px;
+			margin-bottom: 20px;
+		}
+
+		&__text {
+			font-size: 22px;
+		}
+	}
+
+	.title {
+		font-size: 24px;
+		line-height: 30px;
+		margin-bottom: 16px;
+
+		.base-form-subscribe_popup & {
+			max-width: calc(100% - 35px);
+		}
+	}
+
+	.text {
+		font-size: 14px;
+		line-height: 20px;
+	}
+}

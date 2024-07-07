@@ -1,0 +1,260 @@
+.container {
+	position: relative;
+}
+
+.content {
+	padding: 24px 0 48px;
+	width: 808px;
+	min-height: 100vh;
+}
+
+.breadcrumbs {
+	margin-bottom: 40px;
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 76px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -1.52px;
+	margin: 0 0 18px;
+}
+
+.sub-title {
+	opacity: 0.9;
+	color: var(--color-second);
+	font-size: 28px;
+	line-height: 31px;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	margin-bottom: 60px;
+}
+
+.pic-wrap {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 594px;
+	height: 100%;
+}
+
+.pic {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+		position: sticky;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+}
+
+.properties {
+	margin-bottom: 44px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.property-value {
+	display: flex;
+	gap: 12px;
+	color: var(--color-twenty-fifth);
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 22px;
+	letter-spacing: -0.02em;
+
+	&:not(:last-child) {
+		margin-bottom: 24px;
+	}
+}
+
+.property {
+	opacity: 0.5;
+	min-width: 132px;
+}
+
+.value {
+	opacity: 0.9;
+}
+
+.biography {
+	&__title {
+		opacity: 0.5;
+		color: var(--color-twenty-fifth);
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 22px;
+		letter-spacing: -0.02em;
+		margin-bottom: 20px;
+	}
+
+	&__text {
+		color: var(--color-second);
+		font-size: 18px;
+		line-height: 1.6;
+		letter-spacing: -0.01em;
+	}
+}
+
+@include lg {
+	.content {
+		width: calc(
+			100% - 465px - (80px - var(--horizontal-indent))
+		); // 465px это ширина фотки а 80px это отсутп между фоткой и текстом
+	}
+
+	.breadcrumbs {
+		margin-bottom: 32px;
+	}
+
+	.pic-wrap {
+		width: 465px;
+	}
+
+	.property-value {
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+}
+
+@include md {
+	.content {
+		width: 100%;
+		min-height: auto;
+	}
+
+	.breadcrumbs {
+		margin-bottom: 24px;
+	}
+
+	.title {
+		font-size: 58px;
+		line-height: 64px;
+		margin-bottom: 16px;
+	}
+
+	.sub-title {
+		font-size: 24px;
+		line-height: 26px;
+		margin-bottom: 32px;
+	}
+
+	.pic-wrap {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: auto;
+		margin-bottom: 48px;
+	}
+
+	.pic {
+		width: auto;
+		height: 0;
+		flex-grow: 1;
+		padding-top: 84.635%;
+		margin: 0 calc(var(--horizontal-indent) * -1);
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	.properties {
+		margin-bottom: 22px;
+	}
+
+	.property-value {
+		&:not(:last-child) {
+			margin-bottom: 22px;
+		}
+	}
+}
+
+@include sm {
+	.content {
+		width: 100%;
+		min-height: auto;
+		padding: 16px 0 40px;
+	}
+
+	.breadcrumbs {
+		margin-bottom: 16px;
+	}
+
+	.title {
+		font-size: 36px;
+		line-height: 38px;
+		margin-bottom: 10px;
+	}
+
+	.sub-title {
+		font-size: 16px;
+		line-height: 18px;
+		margin-bottom: 26px;
+	}
+
+	.pic-wrap {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: auto;
+		margin-bottom: 28px;
+	}
+
+	.pic {
+		width: auto;
+		height: 0;
+		flex-grow: 1;
+		padding-top: 84.635%;
+		margin: 0 calc(var(--horizontal-indent) * -1);
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	.properties {
+		margin-bottom: 22px;
+	}
+
+	.property-value {
+		flex-direction: column;
+		gap: 8px;
+		font-size: 15px;
+		line-height: 17px;
+
+		&:not(:last-child) {
+			margin-bottom: 22px;
+		}
+	}
+
+	.biography {
+		&__title {
+			font-size: 15px;
+			line-height: 17px;
+			margin-bottom: 10px;
+		}
+
+		&__text {
+			font-size: 14px;
+			line-height: 1.5;
+		}
+	}
+}

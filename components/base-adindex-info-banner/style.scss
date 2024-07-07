@@ -1,0 +1,89 @@
+.base-adindex-info-banner {
+	overflow: hidden;
+	background: var(--color-tenth);
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 0 48px;
+}
+
+.text {
+	width: 670px;
+	color: var(--color-fifth);
+	flex-shrink: 0;
+	font-size: 40px;
+	font-weight: 500;
+	line-height: 56px;
+	letter-spacing: -0.02em;
+
+	span {
+		color: var(--color-eighth);
+	}
+}
+
+.pic {
+	position: relative;
+	max-width: 808px;
+	height: 640px;
+	width: 100%;
+	overflow: hidden;
+	margin-right: -74px;
+
+	// скрываем битый alt пока не загрузится картинка
+	&:not([data-lazy='loaded']) {
+		img {
+			opacity: 0;
+		}
+	}
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+@include lg {
+	.text {
+		width: 518px;
+	}
+}
+
+@include md-max {
+	.base-adindex-info-banner {
+		padding-bottom: 48px;
+	}
+
+	.row {
+		gap: 0;
+		flex-wrap: wrap;
+	}
+
+	.text {
+		width: 100%;
+	}
+
+	.pic {
+		order: -1;
+		width: 100%;
+		height: 666px;
+		margin: 0;
+	}
+}
+
+@include sm {
+	.text {
+		font-size: 24px;
+		line-height: 32px;
+		letter-spacing: -0.02em;
+	}
+
+	.pic {
+		height: 325px;
+	}
+}

@@ -1,0 +1,234 @@
+.base-offer-special {
+	color: var(--color-fifth);
+	overflow: hidden;
+	background: var(--color-third);
+}
+
+.inner {
+	position: relative;
+	max-width: var(--max-width-content);
+	margin: 0 auto;
+	padding: var(--vertical-indent) 0;
+
+	&::before {
+		content: '';
+		opacity: 0.7;
+		position: absolute;
+		top: -476px;
+		right: -169px;
+		width: 758px;
+		height: 758px;
+		border-radius: 50%;
+		filter: blur(126px);
+		background: var(--color-ninth);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 221px;
+		width: 397px;
+		height: 434px;
+		transform: translateY(-50%);
+		background: url('./images/sale-icon.png') no-repeat;
+		background-size: contain;
+	}
+}
+
+.content {
+	position: relative;
+	z-index: 1;
+	width: 49%;
+}
+
+.title {
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	letter-spacing: -1.36px;
+	margin: 0 0 32px;
+}
+
+.text {
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.24px;
+	margin-bottom: 40px;
+}
+
+.prices {
+	display: flex;
+	gap: 0 64px;
+	margin-bottom: 40px;
+}
+
+.price {
+	opacity: 0.9;
+	font-size: 56px;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.56px;
+
+	&-text {
+		opacity: 0.7;
+		font-size: 16px;
+		line-height: 1.3;
+	}
+}
+
+.sale-icon-mob {
+	display: none;
+}
+
+.buttons {
+	display: flex;
+	gap: 0 8px;
+}
+
+.btn {
+	--btn-padding: 35px 48px;
+}
+
+@include lg {
+	.inner {
+		&::before {
+			top: -476px;
+			right: -316px;
+		}
+
+		&::after {
+			right: 74px;
+		}
+	}
+
+	.content {
+		width: 714px;
+	}
+}
+
+@include md {
+	.inner {
+		&::before {
+			top: -310px;
+			right: -550px;
+		}
+
+		&::after {
+			top: auto;
+			right: 84px;
+			bottom: 170px;
+			width: 212px;
+			height: 232px;
+			transform: none;
+		}
+	}
+
+	.content {
+		width: 100%;
+	}
+
+	.title {
+		max-width: 528px;
+		font-size: 52px;
+		line-height: 56px;
+		letter-spacing: -1.04px;
+		margin-bottom: 24px;
+	}
+
+	.text {
+		max-width: 528px;
+		font-size: 18px;
+		letter-spacing: -0.18px;
+	}
+
+	.prices {
+		gap: 20px 0;
+		flex-direction: column;
+	}
+
+	.btn {
+		--btn-padding: 35px 54px;
+	}
+}
+
+@include sm {
+	.inner {
+		&::before,
+		&::after {
+			content: none;
+		}
+	}
+
+	.content {
+		width: 100%;
+	}
+
+	.title,
+	.text,
+	.prices,
+	.buttons {
+		position: relative;
+		z-index: 1;
+	}
+
+	.title {
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 40px;
+		letter-spacing: -0.64px;
+		margin-bottom: 16px;
+	}
+
+	.text {
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: -0.16px;
+		margin-bottom: 32px;
+	}
+
+	.prices {
+		gap: 20px 0;
+		flex-direction: column;
+		margin-bottom: 32px;
+	}
+
+	.price {
+		font-size: 40px;
+		letter-spacing: -0.4px;
+	}
+
+	.sale-icon-mob {
+		position: relative;
+		display: block;
+		width: 212px;
+		height: 232px;
+		margin-bottom: 32px;
+		background: url('./images/sale-icon.png') no-repeat;
+		background-size: contain;
+
+		&::after {
+			content: '';
+			opacity: 0.7;
+			position: absolute;
+			top: -56px;
+			right: -170px;
+			width: 320px;
+			height: 320px;
+			border-radius: 50%;
+			filter: blur(126px);
+			background: var(--color-ninth);
+		}
+	}
+
+	.buttons {
+		gap: 8px 0;
+		flex-direction: column;
+	}
+
+	.btn {
+		--btn-width: 100%;
+		--btn-min-height: 56px;
+		--btn-padding: 16px 20px;
+	}
+}

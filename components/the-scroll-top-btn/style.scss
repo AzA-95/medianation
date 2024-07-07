@@ -1,0 +1,41 @@
+.scroll-top-btn {
+	pointer-events: none;
+	opacity: 0;
+	cursor: pointer;
+	color: var(--color-fifth);
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: 7;
+	width: 210px;
+	height: 140px;
+	transform: translate(0, 100%);
+	font-size: 26px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.02em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.6s;
+	background: var(--color-eighth);
+
+	&::after {
+		content: '';
+		width: 12px;
+		height: 16px;
+		margin-left: 8px;
+		background: get-svg-icon('line-arrow-up', 'color-fifth');
+		background-size: contain;
+	}
+
+	&.active {
+		pointer-events: auto;
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+
+	@include md-max {
+		display: none;
+	}
+}

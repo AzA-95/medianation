@@ -1,0 +1,30 @@
+.tarrifs {
+	overflow: hidden;
+	padding-bottom: 1px; // prevent remove border-bottom on last elements
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 calc(var(--horizontal-indent) * -1);
+}
+
+.tarrif {
+	display: flex; // strech height of child element
+	width: 50%;
+	margin-bottom: -1px;
+
+	&:nth-child(odd) {
+		margin-right: -1px;
+	}
+}
+
+@include md-max {
+	.tarrif {
+		width: 100%;
+
+		&:nth-child(odd) {
+			margin-right: 0;
+		}
+	}
+}

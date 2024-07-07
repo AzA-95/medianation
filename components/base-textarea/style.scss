@@ -1,0 +1,150 @@
+.base-textarea {
+	width: 100%;
+	height: 100%;
+}
+
+.field {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: calc(var(--label-small-height, 52px) - 8px) 0 0;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 0;
+		height: 2px;
+		transition: 0.3s;
+		background: var(--color-eighth);
+	}
+
+	&.full::after {
+		width: 100%;
+	}
+
+	&.invalid {
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			transform: translateY(-50%);
+			background: var(--color-eighth)
+				get-svg-icon('exclamation-point', 'color-fifth') center
+				no-repeat;
+			background-size: 3px 15px;
+		}
+	}
+}
+
+.textarea {
+	display: block;
+	color: var(--color-second);
+	width: 100%;
+	height: 100%;
+	min-height: max(50px, var(--label-full-height, 90px));
+	font-size: 18px;
+	line-height: normal;
+	letter-spacing: -0.18px;
+	resize: none;
+	border: none;
+	background: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	.base-textarea_with-file &,
+	.base-textarea_with-file-resume &,
+	.field.invalid & {
+		padding-right: 40px;
+	}
+
+	@include sm-min {
+		.base-textarea_with-file-resume & {
+			// Нужен чтобы не накладывался при большом тексте(На надпись) десктоп
+			border-bottom: 30px solid transparent;
+		}
+	}
+}
+
+.label {
+	color: rgba(var(--color-second-rgb), 0.6);
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+	font-size: 18px;
+	line-height: normal;
+	letter-spacing: -0.18px;
+	transition: 0.3s;
+
+	span {
+		padding-bottom: 10px;
+	}
+
+	.required {
+		position: relative;
+
+		&::after {
+			content: '*';
+			color: var(--color-eighth);
+			position: absolute;
+			top: 0;
+			left: 100%;
+			margin-left: 4px;
+		}
+	}
+
+	.base-textarea_with-file &,
+	.base-textarea_with-file-resume &,
+	.field.invalid & {
+		padding-right: 40px;
+	}
+
+	.textarea:focus + &,
+	.field.full & {
+		pointer-events: none;
+		font-size: 12px;
+		letter-spacing: -0.12px;
+		transform: translateY(calc(-100% + var(--label-small-height)));
+	}
+
+	@include sm-min {
+		.base-textarea_with-file-resume & {
+			padding-bottom: 30px;
+		}
+
+		.base-textarea_with-file-resume .textarea:focus + &,
+		.base-textarea_with-file-resume .field.full & {
+			padding-bottom: 0;
+		}
+	}
+}
+
+.line {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: rgba(var(--color-first-rgb), 0.1);
+}
+
+.error {
+	margin-top: 8px;
+	color: var(--color-eighth);
+	font-size: 15px;
+	line-height: 17px;
+	font-weight: normal;
+	letter-spacing: -0.01em;
+}

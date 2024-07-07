@@ -1,0 +1,235 @@
+.title {
+	color: var(--color-first);
+	font-size: 68px;
+	line-height: 70px;
+	letter-spacing: -0.02em;
+	margin-bottom: 32px;
+}
+
+.years {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 40px;
+}
+
+.year {
+	cursor: pointer;
+	color: rgba(var(--color-first-rgb), 0.4);
+	font-size: 29px;
+	line-height: 32px;
+	letter-spacing: -0.02em;
+	border-bottom: 2px dashed;
+
+	&.active {
+		cursor: default;
+		color: var(--color-eighth);
+		border-color: transparent;
+	}
+}
+
+.slider {
+	position: relative;
+	margin-left: -70px;
+	margin-right: -20px;
+
+	:deep() {
+		.swiper-slide {
+			display: flex; // strech child to full height
+			width: auto;
+			height: auto;
+		}
+	}
+}
+
+.histories {
+	--history-width: 350px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, var(--history-width));
+	grid-auto-rows: 1fr;
+	grid-auto-flow: column;
+}
+
+.history {
+	position: relative;
+	// без фикс ширины слайдер не коректно определяет ширину блока(.swiper-slide)
+	width: var(--history-width);
+	grid-row-end: span 1;
+	grid-column-end: span 1;
+
+	&:nth-child(1) {
+		grid-row-end: span 2;
+		grid-column-end: span 1;
+	}
+
+	&:nth-child(4),
+	&:nth-child(8n + 12) {
+		width: calc(var(--history-width) * 2);
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: span 2;
+	}
+
+	&:nth-child(4n + 5) {
+		grid-row-end: span 2;
+		grid-column-end: span 1;
+	}
+
+	&:nth-child(6),
+	&:nth-child(8n + 14) {
+		width: calc(var(--history-width) * 2);
+		grid-column-end: span 2;
+	}
+
+	&_white {
+		background: var(--color-fifth);
+	}
+
+	&__pic {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		&:not([data-lazy='loaded']) {
+			background: rgba(var(--color-fourth-rgb), 0.6);
+
+			// hide alt of image before image loaded
+			img {
+				opacity: 0;
+			}
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__desc {
+		position: relative;
+		z-index: 1;
+		padding: 38px 42px;
+	}
+
+	&__date {
+		color: rgba(var(--color-fifth-rgb), 0.6);
+		font-size: 15px;
+		font-weight: 500;
+		line-height: 20px;
+		letter-spacing: -0.02em;
+		margin-bottom: 16px;
+
+		.history_white & {
+			color: rgba(var(--color-first-rgb), 0.6);
+		}
+	}
+
+	&__name {
+		color: var(--color-fifth);
+		font-size: 26px;
+		font-weight: 500;
+		line-height: 32px;
+		letter-spacing: -0.02em;
+
+		.history_white & {
+			color: var(--color-first);
+		}
+	}
+
+	&__full-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@include lg {
+	.slider {
+		margin-left: -62px;
+	}
+}
+
+@include md {
+	.title {
+		font-size: 52px;
+		line-height: 70px;
+		margin-bottom: 24px;
+	}
+
+	.slider {
+		margin-left: calc(var(--horizontal-indent) * -1);
+		margin-right: calc(var(--horizontal-indent) * -1);
+	}
+
+	.years {
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: 0 var(--horizontal-indent);
+		margin-left: calc(var(--horizontal-indent) * -1);
+		margin-right: calc(var(--horizontal-indent) * -1);
+
+		// Скрываем скролбар
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none; /* Safari and Chrome */
+		}
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		margin-bottom: 12px;
+	}
+
+	.years {
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: 0 var(--horizontal-indent);
+		margin-left: calc(var(--horizontal-indent) * -1);
+		margin-right: calc(var(--horizontal-indent) * -1);
+		margin-bottom: 20px;
+
+		// Скрываем скролбар
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none; /* Safari and Chrome */
+		}
+	}
+
+	.year {
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.slider {
+		margin-left: calc(var(--horizontal-indent) * -1);
+		margin-right: calc(var(--horizontal-indent) * -1);
+	}
+
+	.histories {
+		--history-width: 274px;
+	}
+
+	.history {
+		&__desc {
+			padding: 30px 27px;
+		}
+
+		&__name {
+			font-size: 22px;
+			line-height: 28px;
+		}
+	}
+}

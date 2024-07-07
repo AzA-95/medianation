@@ -1,0 +1,107 @@
+.the-header {
+	position: relative;
+	z-index: 5; // не уменшать может накластся кнопка(Связаться с нами) в футере на (отрытое Меню в шапке)
+	display: flex;
+	width: 100%;
+	height: var(--header-height);
+
+	.menu-light-color & {
+		@include md-min {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+}
+
+.logo,
+.intro,
+.callback {
+	flex-shrink: 0;
+}
+
+.intro {
+	&-text {
+		color: rgba(var(--color-first-rgb), 0.5);
+		max-width: 186px;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding: 0 23px;
+		font-size: 14px;
+		line-height: 15px;
+		background: var(--color-seventh);
+	}
+}
+
+.burger {
+	display: none;
+}
+
+.menu {
+	flex-grow: 1;
+}
+
+.callback {
+	position: relative;
+	width: 196px;
+	display: flex; // strech buttons
+
+	.scroll-to-form-btn,
+	.open-form-btn,
+	.close-form-btn {
+		--btn-width: 100%;
+		--btn-font-size: 12px;
+		width: 100%;
+		display: flex; // strech buttons
+	}
+
+	.close-form-btn {
+		&__icon {
+			display: block;
+			width: 10px;
+			height: 10px;
+			background: get-svg-icon('close-wide', 'color-fifth') no-repeat;
+			background-size: contain;
+		}
+	}
+}
+
+@include md-min {
+	.callback {
+		z-index: 4;
+	}
+}
+
+@include md-max {
+	.intro {
+		flex-grow: 1;
+		flex-shrink: 1;
+
+		&-text {
+			max-width: none;
+			padding: 20px 57px;
+			font-size: 18px;
+			line-height: 20px;
+		}
+	}
+
+	.menu {
+		width: 0;
+		flex-grow: 0;
+	}
+
+	.burger {
+		display: block;
+	}
+}
+
+@include sm {
+	.intro {
+		display: none;
+	}
+
+	.callback {
+		flex-grow: 1;
+	}
+}

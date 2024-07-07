@@ -1,0 +1,263 @@
+.base-tariffs-small-grid {
+	margin: var(--vertical-indent) 0;
+}
+
+.title {
+	color: var(--color-second);
+	font-size: 52px;
+	font-weight: 500;
+	line-height: 64px;
+	letter-spacing: -0.02em;
+	margin: 0 0 30px;
+}
+
+.tariffs {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tariff {
+	width: 33.33333%;
+	position: relative;
+	padding: 40px 50px;
+	background: var(--color-fifth);
+	border: 1px solid var(--color-thirty-first);
+	margin: 0 -1px -1px 0; // remove multiple border
+	transition: background-color 0.2 ease-in-out;
+
+	@include md-min {
+		&:hover,
+		&.active {
+			background: var(--color-third);
+		}
+
+		&:hover &,
+		.active & {
+			&__name {
+				color: var(--color-fifth);
+			}
+
+			&__info-title,
+			&__info-text {
+				opacity: 0;
+			}
+
+			&__btns {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__name {
+		color: var(--color-first);
+		font-size: 28px;
+		font-weight: 500;
+		line-height: 31px;
+		letter-spacing: -0.02em;
+		margin-bottom: 16px;
+	}
+
+	&__price {
+		color: var(--color-twenty-seventh);
+		font-size: 43px;
+		font-weight: 500;
+		line-height: 47px;
+		letter-spacing: -0.01em;
+		margin-bottom: 24px;
+	}
+
+	&__bottom {
+		min-height: 64px; // equal to button height
+	}
+
+	&__info-title,
+	&__info-text {
+		font-size: 20px;
+		line-height: 32px;
+		letter-spacing: -0.01em;
+	}
+
+	&__info-title {
+		font-weight: 500;
+	}
+
+	&__bottom {
+		min-height: 134px; // equal to button height
+	}
+
+	&__btns {
+		opacity: 0;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 0 50px 40px;
+	}
+
+	&__btn {
+		width: calc(50% - 4px);
+		--btn-width: 100%;
+		--btn-padding: 23px 10px;
+	}
+}
+
+@include lg {
+	.tariff {
+		padding: 40px 32px;
+
+		&__name {
+			font-size: 24px;
+			line-height: 26px;
+		}
+
+		&__price {
+			font-size: 32px;
+			line-height: 35px;
+			margin-bottom: 22px;
+		}
+
+		&__btns {
+			gap: 8px;
+			flex-wrap: wrap;
+			padding: 0 32px 40px;
+		}
+
+		&__btn {
+			width: 100%;
+		}
+	}
+}
+
+@include md {
+	.title {
+		font-size: 40px;
+		line-height: 56px;
+	}
+
+	.tariff {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 50%;
+		padding: 40px 24px 24px;
+
+		&__name {
+			font-size: 22px;
+			line-height: 24px;
+		}
+
+		&__price {
+			font-size: 32px;
+			line-height: 35px;
+		}
+
+		&__bottom {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			width: 100%;
+			min-height: auto;
+		}
+
+		&__info-column {
+			margin-bottom: 24px;
+		}
+
+		&__info-title,
+		&__info-text {
+			width: 100%;
+			font-size: 18px;
+			line-height: 32px;
+		}
+
+		&__btns {
+			margin-top: auto;
+			opacity: 1;
+			position: static;
+			padding: 0;
+		}
+
+		&__btn {
+			width: calc(58% - 4px);
+			--btn-font-size: 12px;
+			--btn-padding: 22px 15px;
+
+			&_detail {
+				width: calc(42% - 4px);
+
+				:deep() {
+					.base-button {
+						color: var(--color-third);
+						background: var(--color-sixth);
+					}
+				}
+			}
+		}
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 24px;
+		line-height: 32px;
+		margin: 0 0 16px;
+	}
+
+	.tariff {
+		width: 100%;
+		padding: 24px 16px;
+		margin: 0 0 -1px 0; // remove multiple boreder
+
+		&__name {
+			font-size: 20px;
+			line-height: 22px;
+			margin-bottom: 8px;
+		}
+
+		&__price {
+			font-size: 28px;
+			line-height: 30px;
+			margin-bottom: 16px;
+		}
+
+		&__bottom {
+			min-height: auto;
+		}
+
+		&__info-column {
+			margin-bottom: 16px;
+		}
+
+		&__info-title,
+		&__info-text {
+			font-size: 16px;
+			line-height: 24px;
+		}
+
+		&__btns {
+			opacity: 1;
+			position: static;
+			padding: 0;
+		}
+
+		&__btn {
+			width: calc(58% - 4px);
+			--btn-font-size: 12px;
+			--btn-padding: 22px 12px;
+
+			&_detail {
+				width: calc(42% - 4px);
+
+				:deep() {
+					.base-button {
+						color: var(--color-third);
+						background: var(--color-sixth);
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+// https://stackoverflow.com/questions/3971841/how-to-resize-images-proportionally-keeping-the-aspect-ratio
+
+// Нужен чтобы не было layout shift и картинка
+// подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+// --ratio: min(1, calc(maxWidth / srcWidth), calc(maxHeight / srcHeight));
+// --ratio: min(
+// 	1,
+// 	calc(var(--img-max-width) / var(--img-width)),
+// 	calc(var(--img-max-height) / var(--img-height))
+// );
+
+/**
+  * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
+  * images to fit into a certain area.
+  *
+  * @param {Number} srcWidth width of source image
+  * @param {Number} srcHeight height of source image
+  * @param {Number} maxWidth maximum available width
+  * @param {Number} maxHeight maximum available height
+  * @return {Object} { width, height }
+  */
+
+//   function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+
+//     var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+//     return { width: srcWidth*ratio, height: srcHeight*ratio };
+//  }
+
+// function imgSizeFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+// 	var ratio = Math.min(1, maxWidth / srcWidth, maxHeight / srcHeight);
+//  return { width: srcWidth * ratio, height: srcHeight * ratio };
+// }
+
+// @function get-image-ratio($width, $height, $maxWidth, $maxHeight) {
+// 	$ratio: Math.min(1, maxWidth / srcWidth, maxHeight / srcHeight);
+
+// 	@return $ratio;
+// }
+
+// --ratio: min(1, calc(maxWidth / srcWidth), calc(maxHeight / srcHeight));

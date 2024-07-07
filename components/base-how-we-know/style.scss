@@ -1,0 +1,139 @@
+.base-how-we-know {
+	// используем маржин чтобы схлопнулся если указан нижний маржин у вышестояшегося блока
+	margin: var(--vertical-indent) 0 0;
+}
+
+.title {
+	max-width: 1022px;
+	color: #2d2d2d;
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	letter-spacing: -1.36px;
+	margin: 0 0 40px;
+}
+
+.items {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 calc(var(--horizontal-indent) * -1);
+}
+
+.item {
+	width: 50%;
+	display: flex;
+	padding: 64px var(--horizontal-indent);
+	background: #fff;
+
+	&:nth-child(4n + 2),
+	&:nth-child(4n + 3) {
+		background: #efefef;
+	}
+}
+
+.number {
+	flex-shrink: 0;
+	width: 80px;
+	color: #e9330b;
+	font-size: 68px;
+	line-height: 74px;
+	letter-spacing: -1.36px;
+}
+
+.desc {
+	color: #434343;
+	font-size: 17px;
+	line-height: 28px;
+	letter-spacing: -0.17px;
+	margin-left: 30px;
+
+	:deep() {
+		p {
+			margin: 0 0 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@include md {
+	.title {
+		font-size: 52px;
+		line-height: 56px;
+		letter-spacing: -1.04px;
+		margin: 0 0 30px;
+	}
+
+	.item {
+		width: 100%;
+		padding: 48px var(--horizontal-indent);
+
+		&:nth-child(1n) {
+			background: #fff;
+		}
+
+		&:nth-child(2n) {
+			background: #efefef;
+		}
+	}
+
+	.number {
+		font-size: 52px;
+		line-height: 56px;
+		letter-spacing: -1.04px;
+	}
+
+	.desc {
+		margin-left: 16px;
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		letter-spacing: -1.54px;
+		margin: 0 0 16px;
+	}
+
+	.item {
+		flex-wrap: wrap;
+		width: 100%;
+		padding: 32px var(--horizontal-indent);
+
+		&:nth-child(1n) {
+			background: #fff;
+		}
+
+		&:nth-child(2n) {
+			background: #efefef;
+		}
+	}
+
+	.number {
+		width: 100%;
+		font-size: 27px;
+		line-height: normal;
+		letter-spacing: -0.54px;
+		margin-bottom: 8px;
+	}
+
+	.desc {
+		font-size: 15px;
+		line-height: 22px;
+		letter-spacing: -0.15px;
+		margin-left: 0;
+
+		:deep() {
+			p {
+				margin: 0 0 16px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

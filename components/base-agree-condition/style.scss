@@ -1,0 +1,49 @@
+.base-agree-condition {
+	color: var(--color-second);
+	font-size: 14px;
+	line-height: 1.43;
+	text-align: center;
+	letter-spacing: -0.01em;
+
+	a {
+		color: var(--color-eighth);
+
+		@include hover {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	&_subscribe-form {
+		color: var(--color-fifth);
+		text-align: left;
+
+		a {
+			color: inherit;
+		}
+	}
+
+	&_subscribe-form-second {
+		color: rgba(var(--color-tenth-rgb), 0.5);
+		text-align: left;
+	}
+
+	&_jobs-form {
+		width: fit-content;
+		text-align: left;
+		margin: 0 auto;
+
+		.documents-link {
+			margin-top: 15px;
+			display: block;
+			width: fit-content;
+		}
+	}
+
+	&_referral-form {
+		@include md-min {
+			text-align: left;
+		}
+	}
+}

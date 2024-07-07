@@ -1,0 +1,317 @@
+.base-service-info {
+	overflow: hidden;
+	padding: 24px 0 0;
+
+	&.has-mb {
+		margin-bottom: var(--vertical-indent);
+	}
+}
+
+.row {
+	display: flex;
+}
+
+.col {
+	@include lg-min {
+		&:not(&_full) {
+			&:nth-child(1) {
+				width: 752px;
+			}
+
+			&:nth-child(2) {
+				width: calc(100% - 752px);
+				padding-top: 56px;
+				padding-left: 120px;
+			}
+		}
+
+		&_full {
+			width: 100%;
+		}
+	}
+}
+
+.breadcrumbs {
+	margin-bottom: 40px;
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 76px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -1.52px;
+	margin: 0 0 30px;
+}
+
+.text {
+	font-size: 20px;
+	line-height: 1.6;
+	margin-bottom: 40px;
+
+	:deep() {
+		p,
+		ul,
+		ol {
+			margin: 0;
+			padding: 0;
+
+			// нужен чтобы был отступ(сверху) если вышестояший контент заполнен без тегов и т.д
+			&:not(:first-child) {
+				margin-top: 22px;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 22px;
+			}
+		}
+
+		ul {
+			list-style: none;
+
+			ul,
+			ol {
+				margin-left: 24px;
+			}
+
+			& > li {
+				position: relative;
+				padding-left: 20px;
+
+				&:not(:last-child) {
+					margin-bottom: 18px;
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0.6em;
+					left: 0;
+					width: 4px;
+					height: 4px;
+					background: var(--color-eighth);
+				}
+			}
+		}
+
+		ol {
+			list-style: none;
+			counter-reset: li;
+
+			ul,
+			ol {
+				margin-left: 24px;
+			}
+
+			& > li {
+				position: relative;
+				display: flex;
+
+				&::before {
+					content: counter(li) '.';
+					counter-increment: li;
+					flex-shrink: 0;
+					width: 2ch;
+					margin-right: 4px;
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 18px;
+				}
+			}
+		}
+	}
+}
+
+.awards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 64px 74px;
+}
+
+.award {
+	width: calc(50% - 37px);
+}
+
+.btn {
+	--btn-width: 578px;
+	--btn-font-size: 15px;
+	--btn-padding: 30px;
+}
+
+.bottom {
+	margin-top: 64px;
+}
+
+.menu-title {
+	color: var(--color-first);
+	font-size: 44px;
+	line-height: 48px;
+	letter-spacing: -0.02em;
+	margin-bottom: 30px;
+}
+
+.menu-items {
+	margin: 0 calc(var(--horizontal-indent) * -1);
+}
+
+@include lg {
+	.breadcrumbs {
+		margin-bottom: 32px;
+	}
+
+	.row {
+		gap: 64px 0;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		width: 100%;
+	}
+
+	.awards {
+		gap: 30px 64px;
+
+		&:not(:last-child) {
+			margin-bottom: 64px;
+		}
+	}
+
+	.award {
+		width: 232px;
+	}
+}
+
+@include md {
+	.breadcrumbs {
+		margin-bottom: 24px;
+	}
+
+	.row {
+		gap: 48px 0;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		width: 100%;
+	}
+
+	.title {
+		font-size: 58px;
+		line-height: 64px;
+	}
+
+	.btn {
+		--btn-width: 100%;
+	}
+
+	.awards {
+		gap: 0;
+		overflow-x: auto;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		padding: 0 var(--horizontal-indent);
+		margin: 0 calc(var(--horizontal-indent) * -1);
+
+		// Скрываем скролбар
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none; /* Safari and Chrome */
+		}
+	}
+
+	.award {
+		min-width: 290px;
+		padding: 0 36px 0 0;
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	.bottom {
+		margin-top: 48px;
+	}
+
+	.menu-title {
+		font-size: 38px;
+		line-height: 45px;
+		margin-bottom: 28px;
+	}
+}
+
+@include sm {
+	.base-service-info {
+		padding: 16px 0 0;
+	}
+
+	.breadcrumbs {
+		margin-bottom: 16px;
+	}
+
+	.row {
+		gap: 40px 0;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		width: 100%;
+	}
+
+	.title {
+		font-size: 36px;
+		line-height: 38px;
+		margin-bottom: 16px;
+	}
+
+	.text {
+		font-size: 14px;
+		margin-bottom: 24px;
+	}
+
+	.btn {
+		--btn-width: 100%;
+		--btn-font-size: 13px;
+		--btn-padding: 18px;
+	}
+
+	.awards {
+		gap: 0;
+		overflow-x: auto;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		padding: 0 var(--horizontal-indent);
+		margin: 0 calc(var(--horizontal-indent) * -1);
+
+		// Скрываем скролбар
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+
+		&::-webkit-scrollbar {
+			display: none; /* Safari and Chrome */
+		}
+	}
+
+	.award {
+		width: 25%;
+		min-width: 200px;
+		padding: 0 36px 0 0;
+		--award-img-max-height: 54px;
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	.bottom {
+		margin-top: 40px;
+	}
+
+	.menu-title {
+		font-size: 24px;
+		line-height: 1.4;
+		margin-bottom: 20px;
+	}
+}

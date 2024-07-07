@@ -1,0 +1,474 @@
+.client-with-task {
+	background: var(--color-eighteenth);
+
+	&__row {
+		display: flex;
+		margin: 0 calc(var(--horizontal-indent) * -1);
+	}
+}
+
+.client {
+	order: 1;
+	width: 516px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	padding: 80px 98px;
+	background: var(--color-twentieth);
+
+	&__pic {
+		text-align: center;
+		--img-max-width: 320px;
+		--img-max-height: 80px;
+
+		&:not([data-lazy='loaded']) {
+			@include loading;
+		}
+
+		img {
+			// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+			--ratio: min(
+				1px,
+				var(--img-max-width) / var(--img-width),
+				var(--img-max-height) / var(--img-height)
+			);
+			display: block;
+			width: calc(var(--img-width) * var(--ratio, 1px));
+			height: calc(var(--img-height) * var(--ratio, 1px));
+			// фолбек если css свойство min не подерживается
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	&__info {
+		margin-top: 40px;
+		color: var(--color-eighth);
+		font-size: 32px;
+		line-height: normal;
+		text-align: center;
+		letter-spacing: -0.02em;
+	}
+
+	&__link {
+		color: inherit;
+		word-break: break-word;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.task {
+	flex-grow: 1;
+	color: var(--color-first);
+	padding: 48px var(--horizontal-indent);
+
+	&__title {
+		font-size: 59px;
+		font-weight: 500;
+		line-height: 70px;
+		letter-spacing: -0.02em;
+		margin: 0 0 22px;
+	}
+
+	&__text {
+		font-size: 24px;
+		line-height: 1.5;
+		letter-spacing: -0.01em;
+
+		:deep() {
+			p,
+			ul,
+			ol {
+				&:not(:last-child) {
+					margin-bottom: 20px;
+				}
+
+				@include sm {
+					&:not(:last-child) {
+						margin-bottom: 16px;
+					}
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				li {
+					position: relative;
+					padding-left: 20px;
+
+					&:not(:last-child) {
+						margin-bottom: 18px;
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0.6em;
+						left: 0;
+						width: 4px;
+						height: 4px;
+						background: var(--color-eighth);
+					}
+
+					@include sm {
+						&:not(:last-child) {
+							margin-bottom: 14px;
+						}
+					}
+				}
+			}
+
+			ol {
+				padding-left: 22px;
+
+				li {
+					&:not(:last-child) {
+						margin-bottom: 18px;
+					}
+
+					@include sm {
+						&:not(:last-child) {
+							margin-bottom: 14px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.kpi {
+	color: var(--color-fifth);
+	padding: 48px 0;
+	background: var(--color-eighth);
+
+	&__title {
+		font-size: 59px;
+		font-weight: 500;
+		line-height: 1;
+		letter-spacing: -0.02em;
+		margin: 0 0 31px;
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 40px;
+	}
+
+	&__caption {
+		font-size: 62px;
+		font-weight: 500;
+		line-height: 68px;
+		letter-spacing: -0.02em;
+	}
+
+	&__text {
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 22px;
+		letter-spacing: -0.01em;
+	}
+}
+
+.team {
+	padding: 48px 0;
+	background: var(--color-fifth);
+	border-top: 2px solid var(--color-sixth);
+
+	&__title {
+		font-size: 44px;
+		font-weight: 500;
+		line-height: 48px;
+		letter-spacing: -0.02em;
+		margin: 0 0 22px;
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(442px, 1fr));
+		gap: 40px 64px;
+	}
+
+	&__person {
+		display: flex;
+
+		&-photo {
+			width: 74px;
+			height: 74px;
+			flex-shrink: 0;
+			overflow: hidden;
+			border-radius: 50%;
+
+			&:not([data-lazy='loaded']) {
+				@include loading;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		&-desc {
+			margin-left: 24px;
+		}
+
+		&-name {
+			position: relative;
+			color: var(--color-third);
+			font-size: 24px;
+			font-weight: 500;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+			margin-bottom: 8px;
+
+			&_link {
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+
+				&::after {
+					content: '';
+					width: 10px;
+					height: 10px;
+					flex-shrink: 0;
+					margin-top: 2px;
+					margin-left: 8px;
+					background: get-svg-icon('link-arrow', 'color-third')
+						no-repeat;
+					background-size: contain;
+				}
+
+				&:hover {
+					color: var(--color-eighth);
+
+					&::after {
+						background-image: get-svg-icon(
+							'link-arrow',
+							'color-eighth'
+						);
+					}
+				}
+			}
+		}
+
+		&-profession {
+			color: rgba(var(--color-third-rgb), 0.7);
+			font-size: 15px;
+			font-weight: 500;
+			line-height: 17px;
+			letter-spacing: -0.01em;
+		}
+	}
+}
+
+@include lg {
+	.client {
+		width: 424px;
+		padding: 75px 52px;
+	}
+
+	.task {
+		&__title {
+			font-size: 52px;
+		}
+
+		&__text {
+			font-size: 22px;
+		}
+	}
+
+	.kpi {
+		&__title {
+			font-size: 52px;
+		}
+	}
+
+	.team {
+		&__list {
+			grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+		}
+	}
+}
+
+@include md {
+	.client {
+		width: 288px;
+		padding: 50px 64px;
+
+		&__pic {
+			--img-max-width: 160px;
+		}
+
+		&__info {
+			margin-top: 27px;
+			font-size: 22px;
+		}
+	}
+
+	.task {
+		padding: 40px var(--horizontal-indent);
+
+		&__title {
+			font-size: 52px;
+		}
+
+		&__text {
+			font-size: 20px;
+		}
+	}
+
+	.kpi {
+		padding: 40px 0;
+
+		&__title {
+			font-size: 52px;
+		}
+
+		&__list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		&__caption {
+			font-size: 47px;
+			line-height: 52px;
+		}
+
+		&__text {
+			font-size: 15px;
+			line-height: 17px;
+		}
+	}
+
+	.team {
+		padding: 40px 0;
+
+		&__list {
+			grid-template-columns: repeat(auto-fit, minmax(314px, 1fr));
+			gap: 40px;
+		}
+
+		&__person {
+			&-name {
+				font-size: 18px;
+			}
+
+			&-desc {
+				margin-left: 16px;
+			}
+		}
+	}
+}
+
+@include sm {
+	.client-with-task {
+		&__row {
+			flex-wrap: wrap;
+		}
+	}
+
+	.client {
+		order: 0;
+		width: 100%;
+		padding: 25px 40px;
+
+		&__pic {
+			--img-max-width: 160px;
+		}
+
+		&__info {
+			margin-top: 18px;
+			font-size: 22px;
+		}
+	}
+
+	.task {
+		width: 100%;
+		padding: 25px var(--horizontal-indent);
+
+		&__title {
+			font-size: 27px;
+			line-height: 30px;
+			margin-bottom: 12px;
+		}
+
+		&__text {
+			font-size: 16px;
+		}
+	}
+
+	.kpi {
+		padding: 25px 0;
+
+		&__title {
+			font-size: 27px;
+		}
+
+		&__list {
+			grid-template-columns: 100%;
+			gap: 20px;
+		}
+
+		&__caption {
+			font-size: 43px;
+			line-height: 48px;
+		}
+
+		&__text {
+			font-size: 13px;
+			line-height: 15px;
+		}
+	}
+
+	.team {
+		padding: 25px 0;
+
+		&__title {
+			font-size: 27px;
+			line-height: 30px;
+			margin: 0 0 12px;
+		}
+
+		&__list {
+			display: grid;
+			grid-template-columns: 100%;
+			gap: 16px;
+		}
+
+		&__person {
+			align-items: center;
+
+			&-photo {
+				width: 56px;
+				height: 56px;
+			}
+
+			&-desc {
+				margin-left: 16px;
+			}
+
+			&-name {
+				font-size: 16px;
+			}
+
+			&-profession {
+				font-size: 12px;
+				line-height: 14px;
+			}
+		}
+	}
+}

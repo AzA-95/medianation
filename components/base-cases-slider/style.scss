@@ -1,0 +1,29 @@
+.base-cases-slider {
+	&.has-mb {
+		margin: 0 0 var(--vertical-indent);
+	}
+}
+
+.slider-inner {
+	background: var(--color-twentieth);
+
+	&-content {
+		position: relative;
+		max-width: var(--max-width-content);
+		margin: 0 auto;
+	}
+
+	:deep() {
+		.swiper-slide {
+			display: flex; // strech child to full height
+			height: auto;
+		}
+	}
+
+	.base-slider-arrow-button {
+		height: calc(
+			100% - 80px
+		); // отступ 80px чтобы кнопки слайдера не перекрывали нижнюю ссылку и кнопку расположеных по бокам
+		padding-top: 80px; // нужен чтобы кнопка слайдера была по середине
+	}
+}

@@ -1,0 +1,22 @@
+.base-subscribe-popup {
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+}
+
+.close {
+	cursor: pointer;
+	position: absolute;
+	top: 28px;
+	right: 28px;
+	width: 25px;
+	height: 25px;
+	background: get-svg-icon('close', 'color-fifth') no-repeat;
+	background-size: contain;
+}
+
+@include sm {
+	.close {
+		right: 20px;
+	}
+}

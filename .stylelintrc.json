@@ -1,0 +1,39 @@
+{
+	"extends": ["stylelint-config-standard-scss"],
+	"overrides": [
+		{
+			"files": ["*.vue", "**/*.vue"],
+			"extends": ["stylelint-config-standard-vue/scss"]
+		}
+	],
+	"rules": {
+		"selector-class-pattern": [
+			"^([a-z][a-z0-9]*)([-][a-z0-9]+)*([_][_][a-z0-9]+){0,1}([_][a-z0-9]+){0,1}([-][a-z0-9]+)*$",
+			{
+				"message": "Expected class selector to be kebab-case or how bem naming classes"
+			}
+		],
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"ignorePseudoClasses": ["deep"]
+			}
+		],
+		"value-keyword-case": [
+			"lower",
+			{
+				"camelCaseSvgKeywords": true
+			}
+		],
+		"color-function-notation": "legacy",
+		"declaration-block-no-redundant-longhand-properties": null,
+		"scss/double-slash-comment-empty-line-before": null,
+		"scss/operator-no-newline-after": null,
+		"custom-property-empty-line-before": null,
+		"declaration-empty-line-before": null,
+		"comment-empty-line-before": null,
+		"at-rule-empty-line-before": null,
+		"no-descending-specificity": null,
+		"selector-not-notation": null
+	}
+}

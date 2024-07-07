@@ -1,0 +1,149 @@
+.base-certificates {
+	color: var(--color-first);
+	overflow: hidden;
+	margin: var(--vertical-indent) 0 100px;
+}
+
+.container {
+	overflow: hidden;
+}
+
+.title {
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 1.11;
+	letter-spacing: -0.02em;
+	text-align: center;
+	margin: 0 0 54px;
+
+	.base-certificates_title-on-left & {
+		text-align: left;
+	}
+}
+
+.numbers {
+	display: flex;
+	gap: 120px;
+	margin-bottom: 48px;
+}
+
+.number {
+	&__count {
+		color: var(--color-eighth);
+		font-size: 90px;
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+	}
+
+	&__text {
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 19px;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+}
+
+.toprates {
+	padding: 80px var(--horizontal-indent);
+	margin: 0 calc(var(--horizontal-indent) * -1);
+	background: var(--color-third) url(./images/bg.jpg) no-repeat;
+	background-size: cover;
+
+	&:not(:last-child) {
+		margin-bottom: 80px;
+	}
+}
+
+.certificate-list {
+	&:not(:last-child) {
+		margin-bottom: 80px;
+	}
+}
+
+@include md {
+	.base-certificates {
+		margin: var(--vertical-indent) 0 80px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 1.23;
+		margin-bottom: 30px;
+	}
+
+	.numbers {
+		margin-bottom: 30px;
+	}
+
+	.number {
+		&__count {
+			font-size: 67px;
+		}
+
+		&__text {
+			font-size: 13px;
+			line-height: 14px;
+		}
+	}
+
+	.toprates {
+		padding: 65px var(--horizontal-indent);
+
+		&:not(:last-child) {
+			margin-bottom: 64px;
+		}
+	}
+
+	.certificate-list {
+		&:not(:last-child) {
+			margin-bottom: 64px;
+		}
+	}
+}
+
+@include sm {
+	.base-certificates {
+		margin: var(--vertical-indent) 0 60px;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 1.2;
+		margin-bottom: 20px;
+	}
+
+	.numbers {
+		gap: 26px 0;
+		flex-wrap: wrap;
+		margin-bottom: 26px;
+	}
+
+	.number {
+		width: 100%;
+
+		&__count {
+			font-size: 46px;
+		}
+
+		&__text {
+			font-size: 11px;
+			line-height: 12px;
+		}
+	}
+
+	.toprates {
+		padding: 40px var(--horizontal-indent) 45px;
+
+		&:not(:last-child) {
+			margin-bottom: 40px;
+		}
+	}
+
+	.certificate-list {
+		&:not(:last-child) {
+			margin-bottom: 40px;
+		}
+	}
+}

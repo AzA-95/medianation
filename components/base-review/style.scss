@@ -1,0 +1,273 @@
+.base-review {
+	background: var(--color-eighteenth);
+}
+
+.row {
+	display: flex;
+}
+
+.left {
+	padding: 48px var(--horizontal-indent);
+}
+
+.title {
+	font-size: 44px;
+	font-weight: 500;
+	line-height: 48px;
+	letter-spacing: -0.02em;
+	margin: 0 0 22px;
+}
+
+.rating {
+	margin-bottom: 22px;
+
+	&__row {
+		display: flex;
+		align-items: center;
+	}
+
+	&__stars {
+		display: flex;
+		flex-shrink: 0;
+	}
+
+	&__star-active,
+	&__star-inactive {
+		width: 32px;
+		height: 32px;
+	}
+
+	&__star-active {
+		background: get-svg-icon('star', 'color-eighth') no-repeat;
+		background-size: contain;
+	}
+
+	&__star-inactive {
+		background: get-svg-icon('star', 'color-forty-third') no-repeat;
+		background-size: contain;
+	}
+
+	&__grade {
+		position: relative;
+		top: 2px;
+		color: var(--color-third);
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1;
+		letter-spacing: -0.02em;
+		margin-left: 16px;
+	}
+}
+
+.text {
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+}
+
+.file {
+	margin-top: 22px;
+}
+
+.right {
+	width: 480px;
+	flex-shrink: 0;
+	padding: 68px var(--horizontal-indent);
+}
+
+.client {
+	text-align: center;
+
+	&__logo {
+		--img-max-width: calc(
+			480px - var(--horizontal-indent) * 2
+		); // see top in .right 480px
+		--img-max-height: 80px;
+		margin-bottom: 27px;
+
+		a,
+		span {
+			display: inline-block;
+			vertical-align: top;
+
+			&:not([data-lazy='loaded']) {
+				@include loading;
+			}
+		}
+
+		img {
+			// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+			--ratio: min(
+				1px,
+				var(--img-max-width) / var(--img-width),
+				var(--img-max-height) / var(--img-height)
+			);
+			display: block;
+			width: calc(var(--img-width) * var(--ratio, 1px));
+			height: calc(var(--img-height) * var(--ratio, 1px));
+			// фолбек если css свойство min не подерживается
+			max-width: 100%;
+			max-height: var(--img-max-height);
+		}
+	}
+
+	&__name {
+		color: var(--color-eighth);
+		font-size: 32px;
+		line-height: 30px;
+		letter-spacing: -0.02em;
+		text-decoration: none;
+		margin-bottom: 32px;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+
+			@include hover {
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+}
+
+@include lg {
+	.text {
+		font-size: 22px;
+	}
+
+	.right {
+		width: 424px;
+		flex-shrink: 0;
+		padding: 52px var(--horizontal-indent);
+	}
+
+	.client {
+		&__logo {
+			--img-max-width: calc(
+				424px - var(--horizontal-indent) * 2
+			); // see top in .right 424px;
+		}
+	}
+}
+
+@include md {
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.left {
+		width: 100%;
+		padding: 48px var(--horizontal-indent);
+	}
+
+	.title {
+		margin: 0 0 20px;
+	}
+
+	.rating {
+		margin-bottom: 20px;
+
+		&__star-active,
+		&__star-inactive {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	.text {
+		font-size: 20px;
+	}
+
+	.file {
+		margin-top: 20px;
+	}
+
+	.right {
+		width: 100%;
+		padding: 24px var(--horizontal-indent);
+	}
+
+	.client {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		text-align: left;
+		gap: 32px;
+
+		&__logo {
+			order: 1;
+			--img-max-width: 160px;
+			--img-max-height: 40px;
+			max-width: 160px;
+			margin-left: auto;
+			margin-bottom: 0;
+		}
+
+		&__name {
+			font-size: 18px;
+			line-height: 24px;
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include sm {
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.left {
+		width: 100%;
+		padding: 24px var(--horizontal-indent);
+	}
+
+	.title {
+		font-size: 20px;
+		line-height: 22px;
+		margin: 0 0 16px;
+	}
+
+	.rating {
+		margin-bottom: 16px;
+
+		&__star-active,
+		&__star-inactive {
+			width: 16px;
+			height: 16px;
+		}
+
+		&__grade {
+			font-size: 16px;
+		}
+	}
+
+	.text {
+		font-size: 16px;
+	}
+
+	.file {
+		margin-top: 16px;
+	}
+
+	.right {
+		width: 100%;
+		padding: 24px var(--horizontal-indent);
+	}
+
+	.client {
+		&__logo {
+			--img-max-width: 160px;
+			--img-max-height: 40px;
+			max-width: 160px;
+			margin: 0 auto 16px;
+		}
+
+		&__name {
+			font-size: 18px;
+			line-height: 24px;
+			margin-bottom: 16px;
+		}
+	}
+}

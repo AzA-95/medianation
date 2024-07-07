@@ -1,0 +1,153 @@
+.base-supported-platforms {
+	color: var(--color-fifth);
+	background: var(--color-third);
+}
+
+.inner {
+	overflow: hidden;
+	max-width: var(--max-width-content);
+	// нужен чтобы не перекрывал стрелки слайдера
+	padding: var(--vertical-indent) 0 128px;
+	margin: 0 auto;
+}
+
+.title {
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	letter-spacing: -1.36px;
+	margin: 0 0 128px;
+}
+
+.slider {
+	position: relative;
+
+	:deep() {
+		.swiper {
+			overflow: visible;
+		}
+
+		.swiper-slide {
+			width: auto;
+		}
+	}
+}
+
+.pic {
+	--img-max-width: 245px;
+	--img-max-height: 56px;
+	max-width: var(--img-max-width);
+	max-height: var(--img-max-height);
+	user-select: none;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	img {
+		// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+		--ratio: min(
+			1px,
+			var(--img-max-width) / var(--img-width),
+			var(--img-max-height) / var(--img-height)
+		);
+		display: block;
+		width: calc(var(--img-width) * var(--ratio, 1px));
+		height: calc(var(--img-height) * var(--ratio, 1px));
+		// фолбек если css свойство min не подерживается
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+@include md-min {
+	.slider {
+		:deep() {
+			.swiper {
+				&:not(.swiper-initialized) {
+					.swiper-slide {
+						&:not(:last-child) {
+							margin-right: 158px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@include md-max {
+	// нужен чтобы не было прыжка пока слайдер не проинициализируется
+	.slider {
+		--col-height: 56px;
+		--gap-space: 48px 158px;
+
+		:deep() {
+			.swiper {
+				&:not(.swiper-initialized) {
+					.swiper-wrapper {
+						display: grid;
+						gap: var(--gap-space);
+						grid-auto-flow: column;
+						grid-template-rows: var(--col-height) var(--col-height);
+					}
+				}
+			}
+		}
+	}
+}
+
+@include md {
+	.inner {
+		padding: var(--vertical-indent) 0 96px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 56px;
+		letter-spacing: -1.04px;
+		margin-bottom: 96px;
+	}
+
+	.slider {
+		:deep() {
+			.swiper-slide {
+				&.central-slide ~ .swiper-slide {
+					margin-top: 48px !important;
+				}
+			}
+		}
+	}
+}
+
+@include sm {
+	.inner {
+		padding: var(--vertical-indent) 0;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		letter-spacing: -0.54px;
+		margin-bottom: 40px;
+	}
+
+	.slider {
+		// используются выше в md-max
+		--col-height: 33px;
+		--gap-space: 40px;
+
+		:deep() {
+			.swiper-slide {
+				&.central-slide ~ .swiper-slide {
+					margin-top: 40px !important;
+				}
+			}
+		}
+	}
+
+	.pic {
+		--img-max-width: 143px;
+		--img-max-height: 33px;
+	}
+}

@@ -1,0 +1,146 @@
+.base-input {
+	width: 100%;
+}
+
+.field {
+	position: relative;
+	width: 100%;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 0;
+		height: 2px;
+		transition: 0.3s;
+		background: var(--color-eighth);
+	}
+
+	&.full::after {
+		width: 100%;
+	}
+
+	&.invalid {
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			transform: translateY(-50%);
+			background: var(--color-eighth)
+				get-svg-icon('exclamation-point', 'color-fifth') center
+				no-repeat;
+			background-size: 4px 15px;
+		}
+	}
+
+	.base-input_light & {
+		&::after {
+			content: none;
+		}
+
+		&.invalid {
+			&::before {
+				background-color: var(--color-fifth);
+				background-image: get-svg-icon(
+					'exclamation-point',
+					'color-eighth'
+				);
+			}
+		}
+	}
+}
+
+.input {
+	display: block;
+	color: var(--color-second);
+	width: 100%;
+	height: 60px;
+	font-size: 18px;
+	line-height: normal;
+	letter-spacing: -0.18px;
+	padding: 0;
+	border: none;
+	border-bottom: 2px solid rgba(var(--color-first-rgb), 0.1);
+	background: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	.field.invalid & {
+		padding-right: 40px;
+	}
+
+	.base-input_light & {
+		color: var(--color-fifth);
+		border-color: rgba(var(--color-fifth-rgb), 0.6);
+	}
+}
+
+.label {
+	color: rgba(var(--color-second-rgb), 0.6);
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	line-height: normal;
+	letter-spacing: -0.18px;
+	transition: 0.3s;
+
+	.required {
+		position: relative;
+
+		&::after {
+			content: '*';
+			color: var(--color-eighth);
+			position: absolute;
+			top: 0;
+			left: 100%;
+			margin-left: 4px;
+		}
+	}
+
+	.input:focus + &,
+	.field.full & {
+		pointer-events: none;
+		font-size: 12px;
+		letter-spacing: -0.12px;
+		transform: translateY(-22px);
+	}
+
+	.field.invalid & {
+		padding-right: 40px;
+	}
+
+	.base-input_light & {
+		color: rgba(var(--color-fifth-rgb), 0.6);
+
+		.required {
+			&::after {
+				color: rgba(var(--color-fifth-rgb), 0.6);
+			}
+		}
+	}
+}
+
+.error {
+	margin-top: 8px;
+	color: var(--color-eighth);
+	font-size: 15px;
+	line-height: 17px;
+	font-weight: normal;
+	letter-spacing: -0.01em;
+
+	.base-input_light & {
+		color: var(--color-fifth);
+	}
+}

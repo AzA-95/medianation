@@ -1,0 +1,140 @@
+.the-header-form {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	justify-content: flex-start;
+	background: var(--color-fifth);
+
+	// Переместил сюда padding чтобы получать позицию для скрола без паддингов по элемуенту ref
+	&__inner {
+		padding: 24px 67px 45px;
+		width: 100%;
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.close-form-btn {
+	display: none;
+}
+
+.top-text {
+	color: rgba(var(--color-second-rgb), 0.6);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 14px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	margin-bottom: 16px;
+}
+
+.header {
+	display: flex;
+	margin-bottom: 48px;
+}
+
+.phone {
+	color: var(--color-first);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-left: 22px;
+
+	&:first-child {
+		margin-left: 0;
+	}
+
+	&:nth-child(2) {
+		margin-right: auto;
+	}
+}
+
+.worktime {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	margin-left: 32px;
+
+	&:first-child {
+		margin-left: 0;
+	}
+}
+
+.success {
+	margin-bottom: 40px;
+}
+
+.form {
+	margin-bottom: 40px;
+}
+
+.socials {
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
+}
+
+@include md-max {
+	.the-header-form {
+		&__inner {
+			padding: 24px 56px 40px;
+		}
+	}
+
+	.close-form-btn {
+		position: absolute;
+		top: calc(var(--header-height) * -1);
+		--btn-width: 100%;
+		--btn-font-size: 12px;
+		width: 100%;
+		height: var(--header-height);
+
+		&__icon {
+			display: block;
+			width: 10px;
+			height: 10px;
+			background: get-svg-icon('close-wide', 'color-fifth') no-repeat;
+			background-size: contain;
+		}
+
+		.footer-form-open-trigger & {
+			display: flex; // show and strech button by height
+		}
+	}
+}
+
+@include sm {
+	.the-header-form {
+		&__inner {
+			padding: 24px;
+		}
+	}
+
+	.header {
+		margin-bottom: 24px;
+		flex-direction: column;
+	}
+
+	.phone {
+		margin: 0 0 8px;
+
+		&:nth-child(2) {
+			margin-right: 0;
+		}
+	}
+
+	.worktime {
+		margin-left: 0;
+	}
+
+	.form {
+		margin-bottom: 24px;
+	}
+}

@@ -1,0 +1,82 @@
+$sm: 768px;
+$md: 1280px;
+$lg: 1600px;
+$xl: 1900px;
+
+@mixin sm-max {
+	@media only screen and (max-width: #{$sm - 1}) {
+		@content;
+	}
+}
+
+@mixin sm-min {
+	@media only screen and (min-width: $sm) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media only screen and (max-width: #{$sm - 1}) {
+		@content;
+	}
+}
+
+@mixin md-max {
+	@media only screen and (max-width: #{$md - 1}) {
+		@content;
+	}
+}
+
+@mixin md-min {
+	@media only screen and (min-width: $md) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media only screen and (min-width: $sm) and (max-width: #{$md - 1}) {
+		@content;
+	}
+}
+
+@mixin lg-max {
+	@media only screen and (max-width: #{$lg - 1}) {
+		@content;
+	}
+}
+
+@mixin lg-min {
+	@media only screen and (min-width: $lg) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media only screen and (min-width: $md) and (max-width: #{$lg - 1}) {
+		@content;
+	}
+}
+
+@mixin xl-max {
+	@media only screen and (max-width: $xl) {
+		@content;
+	}
+}
+
+@mixin xl-min {
+	@media only screen and (min-width: $xl) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media only screen and (min-width: $lg) and (max-width: #{$xl - 1}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (hover: none) and (pointer: coarse) {
+		@content;
+	}
+}

@@ -1,0 +1,15 @@
+.base-slider-scrollbar {
+	position: static !important;
+	height: 10px !important;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+
+	:deep() {
+		.swiper-scrollbar {
+			&-drag {
+				cursor: pointer;
+				background: #e9330b;
+			}
+		}
+	}
+}

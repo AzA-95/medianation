@@ -1,0 +1,91 @@
+.base-clients-grid {
+	margin: var(--vertical-indent) 0;
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	margin: 0 0 50px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
+	gap: 30px 110px;
+}
+
+.pic {
+	--img-max-width: 410px;
+	--img-max-height: 175px;
+	max-width: var(--img-max-width);
+	max-height: var(--img-max-height);
+	user-select: none;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	img {
+		// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+		--ratio: min(
+			1px,
+			var(--img-max-width) / var(--img-width),
+			var(--img-max-height) / var(--img-height)
+		);
+		display: block;
+		width: calc(var(--img-width) * var(--ratio, 1px));
+		height: calc(var(--img-height) * var(--ratio, 1px));
+		// фолбек если css свойство min не подерживается
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+@include lg {
+	.grid {
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 30px 120px;
+	}
+
+	.pic {
+		--img-max-width: 300px;
+	}
+}
+
+@include md {
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+		gap: 30px 62px;
+	}
+
+	.pic {
+		--img-max-width: 296px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 60px;
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		margin-bottom: 40px;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+		gap: 8px 10px;
+	}
+
+	.pic {
+		--img-max-width: 130px;
+		--img-max-height: 62px;
+	}
+}

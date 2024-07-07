@@ -1,0 +1,155 @@
+.title {
+	color: var(--color-first);
+	font-size: 59px;
+	line-height: 70px;
+	letter-spacing: -0.02em;
+	margin-bottom: 50px;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 53px;
+}
+
+.col {
+	&:first-child {
+		padding-right: 147px;
+	}
+}
+
+.caption {
+	color: rgba(var(--color-first-rgb), 0.6);
+	font-size: 18px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	margin-bottom: 24px;
+}
+
+.field {
+	display: flex;
+	color: var(--color-first);
+	font-size: 18px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+
+	&:not(:last-child) {
+		margin-bottom: 24px;
+	}
+}
+
+.term {
+	flex-shrink: 0;
+	width: 220px;
+	opacity: 0.6;
+	padding-right: 38px;
+
+	.col:nth-child(2) & {
+		width: 338px;
+	}
+}
+
+.download {
+	display: inline-flex;
+	align-items: center;
+	color: var(--color-eighth);
+	font-size: 25px;
+	line-height: 28px;
+	letter-spacing: -0.01em;
+	text-decoration: none;
+
+	&:after {
+		content: '';
+		width: 14px;
+		height: 17px;
+		background: get-svg-icon('download', 'color-eighth') no-repeat;
+		background-size: contain;
+		margin-left: 8px;
+	}
+
+	@include hover {
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+@include md {
+	.title {
+		font-size: 45px;
+		line-height: 1.2;
+		margin-bottom: 40px;
+	}
+
+	.row {
+		display: block;
+		margin-bottom: 0;
+	}
+
+	.col {
+		&:first-child {
+			padding-right: 0;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 80px;
+		}
+	}
+
+	.download {
+		display: none;
+	}
+}
+
+@include sm {
+	.title {
+		font-size: 27px;
+		line-height: 1.2;
+		margin-bottom: 20px;
+	}
+
+	.row {
+		display: block;
+		margin-bottom: 0;
+	}
+
+	.col {
+		&:first-child {
+			padding-right: 0;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 36px;
+		}
+	}
+
+	.caption {
+		font-size: 13px;
+		line-height: 24px;
+		margin-bottom: 14px;
+	}
+
+	.field {
+		display: block;
+		font-size: 14px;
+		line-height: 18px;
+
+		&:not(:last-child) {
+			margin-bottom: 16px;
+		}
+	}
+
+	.term {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 4px;
+
+		.col:nth-child(2) & {
+			width: 100%;
+		}
+	}
+
+	.download {
+		display: none;
+	}
+}

@@ -1,0 +1,460 @@
+$left-col-width: 466px;
+$right-col-width: 58%;
+
+.base-services-tab {
+	padding: var(--vertical-indent) 0;
+	background: var(--color-seventh);
+}
+
+.head {
+	display: flex;
+	margin-bottom: 64px;
+}
+
+.top-col-left {
+	flex-shrink: 0;
+	width: $left-col-width;
+}
+
+.top-col-right {
+	width: $right-col-width;
+	margin-left: auto;
+}
+
+.title {
+	color: var(--color-third);
+	font-size: 64px;
+	font-weight: 500;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	margin: 0;
+}
+
+.top-desc {
+	color: var(--color-first);
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+}
+
+.picture {
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	picture,
+	img {
+		display: block;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.row {
+	display: flex;
+}
+
+.col-left {
+	flex-shrink: 0;
+	width: $left-col-width;
+}
+
+.col-right {
+	width: $right-col-width;
+	margin-left: auto;
+}
+
+.services {
+	margin-bottom: 64px;
+}
+
+.service-tab {
+	border-bottom: 1px solid rgba(var(--color-first-rgb), 0.2);
+
+	&:not(.active) {
+		@include hover {
+			&:hover {
+				border-color: var(--color-eighth);
+			}
+		}
+	}
+
+	&__title {
+		cursor: pointer;
+		color: var(--color-first);
+		display: flex;
+		align-items: center;
+		font-size: 40px;
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		padding: 24px 0;
+		margin: 0;
+	}
+
+	&__index {
+		flex-shrink: 0;
+		color: rgba(var(--color-third-rgb), 0.4);
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 26px;
+		letter-spacing: -0.04em;
+		padding-left: 20px;
+		margin-left: auto;
+	}
+
+	&.active &__title,
+	&.active &__index {
+		color: var(--color-eighth);
+		opacity: 1;
+	}
+
+	&__content-wrap {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.2s ease-in-out;
+	}
+
+	&.active &__content-wrap {
+		max-height: var(--max-height, none);
+	}
+
+	&__content {
+		padding: 16px 0 24px;
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px 32px;
+		line-height: 1;
+		margin-bottom: 40px;
+	}
+
+	&__link {
+		opacity: 0.9;
+		color: var(--color-third);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 18px;
+		letter-spacing: -0.02em;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		@include hover {
+			&:hover {
+				color: var(--color-eighth);
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__awards-with-text {
+		margin-bottom: 40px;
+	}
+
+	&__awards {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px 3%;
+
+		&:not(:last-child) {
+			margin-bottom: 16px;
+		}
+	}
+
+	&__award {
+		width: 47%;
+		flex-shrink: 0;
+
+		&-inner {
+			max-width: 285px;
+		}
+	}
+
+	&__desc {
+		color: rgba(var(--color-first-rgb), 0.7);
+		font-size: 18px;
+		line-height: 1.56;
+		letter-spacing: -0.01em;
+	}
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+	}
+
+	&__price {
+		opacity: 0.9;
+		color: var(--color-third);
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 35px;
+		letter-spacing: -0.01em;
+	}
+
+	&__detail {
+		margin-left: auto;
+		position: relative;
+		color: var(--color-first);
+		display: flex;
+		align-items: center;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		text-decoration: none;
+
+		&::after {
+			content: '';
+			width: 10px;
+			height: 10px;
+			flex-shrink: 0;
+			margin-top: 2px;
+			margin-left: 8px;
+			background: get-svg-icon('link-arrow', 'color-third') no-repeat;
+			background-size: contain;
+		}
+
+		@include hover {
+			&:hover {
+				opacity: 0.9;
+				color: var(--color-eighth);
+
+				&::after {
+					background-image: get-svg-icon('link-arrow', 'color-ninth');
+				}
+			}
+		}
+	}
+}
+
+.info {
+	max-width: 590px;
+	color: var(--color-second);
+
+	&__title {
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 26px;
+		letter-spacing: -0.01em;
+		margin-bottom: 16px;
+	}
+
+	&__desc {
+		font-size: 18px;
+		line-height: 24px;
+		letter-spacing: -0.01em;
+
+		span {
+			cursor: pointer;
+			color: var(--color-eighth);
+		}
+	}
+}
+
+@include lg {
+	.picture {
+		max-width: 361px;
+	}
+}
+
+@include md {
+	.head {
+		flex-wrap: wrap;
+		margin-bottom: 48px;
+	}
+
+	.top-col-left,
+	.top-col-right {
+		width: 100%;
+	}
+
+	.top-col-left {
+		margin-bottom: 24px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 1.23;
+	}
+
+	.top-desc {
+		font-size: 18px;
+	}
+
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.col-left,
+	.col-right {
+		width: 100%;
+	}
+
+	.col-left {
+		margin-bottom: 48px;
+	}
+
+	.picture {
+		max-width: 361px;
+		margin: 0 auto;
+	}
+
+	.services {
+		margin-bottom: 48px;
+	}
+
+	.service-tab {
+		&__title {
+			font-size: 32px;
+			line-height: 1.25;
+		}
+
+		&__content {
+			padding: 8px 0 24px;
+		}
+
+		&__list,
+		&__awards-with-text {
+			margin-bottom: 32px;
+		}
+
+		&__price {
+			font-size: 24px;
+			line-height: 26px;
+		}
+
+		&__detail {
+			font-size: 18px;
+		}
+	}
+
+	.info {
+		&__title {
+			font-size: 18px;
+			line-height: 20px;
+		}
+
+		&__desc {
+			font-size: 16px;
+		}
+	}
+}
+
+@include sm {
+	.head {
+		flex-wrap: wrap;
+		margin-bottom: 40px;
+	}
+
+	.top-col-left,
+	.top-col-right {
+		width: 100%;
+	}
+
+	.top-col-left {
+		margin-bottom: 16px;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 1.2;
+	}
+
+	.top-desc {
+		font-size: 16px;
+	}
+
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.col-left,
+	.col-right {
+		width: 100%;
+	}
+
+	.col-left {
+		margin-bottom: 40px;
+	}
+
+	.picture {
+		max-width: 240px;
+		margin: 0 auto;
+	}
+
+	.services {
+		margin-bottom: 40px;
+	}
+
+	.service-tab {
+		&__title {
+			padding: 16px 0;
+			font-size: 24px;
+			line-height: 1.33;
+		}
+
+		&__index {
+			font-size: 16px;
+			line-height: 18px;
+			padding-left: 10px;
+		}
+
+		&__content {
+			padding: 8px 0 16px;
+		}
+
+		&__list,
+		&__awards-with-text {
+			margin-bottom: 24px;
+		}
+
+		&__list {
+			gap: 16px 32px;
+		}
+
+		&__link {
+			font-size: 12px;
+			line-height: 13px;
+		}
+
+		&__awards {
+			gap: 16px 0;
+			flex-wrap: wrap;
+		}
+
+		&__award {
+			width: 100%;
+		}
+
+		&__desc {
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		&__price {
+			font-size: 20px;
+			line-height: 22px;
+		}
+
+		&__detail {
+			font-size: 16px;
+			line-height: 1.1;
+		}
+	}
+
+	.info {
+		&__title {
+			font-size: 16px;
+			line-height: 18px;
+		}
+
+		&__desc {
+			font-size: 14px;
+		}
+	}
+}

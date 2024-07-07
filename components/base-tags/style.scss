@@ -1,0 +1,57 @@
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.tag {
+	cursor: pointer;
+	position: relative;
+	color: rgba(45, 45, 45, 0.4);
+	font-size: 42px;
+	line-height: 110%;
+	letter-spacing: -0.02em;
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: -10px;
+		right: -5px;
+		bottom: -5px;
+		height: 2px;
+		background-image: linear-gradient(
+			to right,
+			transparent 50%,
+			rgba(45, 45, 45, 0.2) 50%
+		);
+		background-size: 20px 100%;
+	}
+
+	&:hover,
+	&.active {
+		color: #e9330b;
+
+		&::after {
+			background: none;
+		}
+	}
+}
+
+@include md {
+	.tag {
+		font-size: 28px;
+		line-height: 111%;
+	}
+}
+
+@include sm {
+	.tags {
+		gap: 16px;
+	}
+
+	.tag {
+		font-size: 20px;
+		line-height: 124%;
+	}
+}

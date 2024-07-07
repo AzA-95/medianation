@@ -1,0 +1,221 @@
+.base-team {
+	// используем маржин чтобы схлопнулся если указан нижний маржин у вышестояшегося блока
+	margin: var(--vertical-indent) 0 0;
+}
+
+// Костыль для позиции скролла(К блоку) так как в качестве отступа используется маржин
+.scroll-pos {
+	position: relative;
+	top: calc(var(--vertical-indent) * -1);
+}
+
+.head {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+
+.title {
+	max-width: 466px;
+	color: var(--color-third);
+	font-size: 64px;
+	font-weight: 400;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	margin: 0;
+
+	&_full {
+		max-width: none;
+	}
+}
+
+.text {
+	flex-shrink: 0;
+	width: 49%;
+	color: var(--color-first);
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+}
+
+.slider {
+	position: relative;
+	overflow: hidden;
+	margin: 0 calc(var(--horizontal-indent) * -1);
+
+	:deep() {
+		.swiper {
+			overflow: visible;
+		}
+
+		.swiper-slide {
+			width: auto;
+		}
+	}
+}
+
+.person {
+	position: relative;
+	width: 420px;
+	height: 630px;
+	overflow: hidden;
+
+	&__photo {
+		position: relative;
+		height: 100%;
+
+		&:not([data-lazy='loaded']) {
+			// hide broken alt before image lazy loaded
+			img {
+				opacity: 0;
+			}
+		}
+
+		&::after {
+			content: '';
+			opacity: 0.7;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(
+				360deg,
+				var(--color-fourth) 0%,
+				rgba(var(--color-fourth-rgb), 0) 100%
+			);
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: top center;
+
+			&:nth-child(2) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				transition: opacity 0.4s;
+			}
+		}
+
+		@include hover {
+			&:hover {
+				img:nth-child(2) {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__desc {
+		position: absolute;
+		left: 32px;
+		right: 32px;
+		bottom: 24px;
+	}
+
+	&__name {
+		color: var(--color-fifth);
+		font-size: 30px;
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		margin-bottom: 16px;
+	}
+
+	&__info,
+	&__experience {
+		color: rgba(var(--color-fifth-rgb), 0.7);
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 1.4;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
+	&__info {
+		margin-bottom: 8px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include lg {
+	.person {
+		width: 380px;
+		height: 570px;
+	}
+}
+
+@include md {
+	.head {
+		gap: 24px 0;
+		flex-wrap: wrap;
+	}
+
+	.title {
+		width: 100%;
+		max-width: none;
+		font-size: 52px;
+		line-height: 1.23;
+	}
+
+	.text {
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.person {
+		width: 360px;
+		height: 500px;
+	}
+}
+
+@include sm {
+	.head {
+		gap: 16px 0;
+		flex-wrap: wrap;
+		margin-bottom: 16px;
+	}
+
+	.title {
+		width: 100%;
+		max-width: none;
+		font-size: 27px;
+		line-height: 1.2;
+	}
+
+	.text {
+		width: 100%;
+		font-size: 16px;
+	}
+
+	.person {
+		width: 320px;
+		height: 480px;
+
+		&__desc {
+			left: 25px;
+			right: 25px;
+		}
+
+		&__name {
+			font-size: 24px;
+			line-height: 1.2;
+		}
+
+		&__info {
+			font-size: 10px;
+		}
+
+		&__experience {
+			font-size: 11px;
+		}
+	}
+}

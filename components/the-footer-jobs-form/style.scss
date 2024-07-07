@@ -1,0 +1,42 @@
+.the-footer-jobs-form {
+	margin: var(--vertical-indent) 0;
+}
+
+// Костыль для позиции скролла(К форме) так как в качестве отступа используется маржин
+.scroll-pos {
+	position: relative;
+	top: calc(var(--vertical-indent) * -1);
+}
+
+.container {
+	position: relative;
+}
+
+.success {
+	max-width: 638px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 41px;
+	font-weight: normal;
+	line-height: 1.19;
+	letter-spacing: -1.18px;
+	text-align: center;
+	margin: 0 0 21px;
+}
+
+.caption {
+	font-size: 15px;
+	line-height: 1.64;
+	color: var(--color-second);
+	text-align: center;
+	margin-bottom: 77px;
+}
+
+.form {
+	max-width: 638px;
+	margin: 0 auto;
+}

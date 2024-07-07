@@ -1,0 +1,182 @@
+.top-error {
+	color: var(--color-eighth);
+	font-size: 16px;
+	margin-bottom: 30px;
+
+	.base-form_subscribe-form & {
+		color: var(--color-fifth);
+	}
+}
+
+.tab-btns {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 64px;
+}
+
+.tab-btn {
+	cursor: pointer;
+	color: rgba(var(--color-twenty-fifth-rgb), 0.9);
+	font-size: 36px;
+	font-weight: 400;
+	line-height: 60px;
+	letter-spacing: -0.02em;
+	border-bottom: 3px dashed rgba(var(--color-fourth-rgb), 0.2);
+
+	&.active {
+		cursor: default;
+		color: var(--color-eighth);
+		border-bottom-color: transparent;
+	}
+}
+
+.fields {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 37px 32px;
+	margin-bottom: 40px;
+
+	@include sm-min {
+		.base-form_indent-big & {
+			gap: 50px 28px;
+		}
+	}
+}
+
+.field {
+	width: calc(50% - 32px / 2);
+	flex-grow: 1;
+
+	&_with-file {
+		width: 100%;
+
+		@include lg-min {
+			width: 100% !important;
+		}
+	}
+
+	&-with-file-wrapper {
+		position: relative;
+	}
+
+	&-file-info {
+		color: rgba(var(--color-second-rgb), 0.6);
+		font-size: 14px;
+		line-height: 1.3;
+		margin-top: 10px;
+	}
+}
+
+.file-input {
+	position: absolute;
+	right: 0;
+	bottom: 17px;
+
+	&.disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	&_jobs {
+		@include sm-min {
+			bottom: 8px;
+			line-height: 1;
+		}
+	}
+}
+
+.selected-file-list {
+	margin-top: 12px;
+
+	&:empty {
+		display: none;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		line-height: 1.3;
+		margin-bottom: 8px;
+	}
+
+	&__name {
+		word-break: break-word;
+	}
+
+	&__size {
+		opacity: 0.6;
+		flex-shrink: 0;
+		margin-left: 6px;
+	}
+
+	&__remove {
+		flex-shrink: 0;
+		cursor: pointer;
+		position: relative;
+		top: -1px;
+		width: 10px;
+		height: 10px;
+		margin-left: 6px;
+		background: get-svg-icon('close', 'color-second') no-repeat;
+		background-size: contain;
+	}
+}
+
+.file-error {
+	margin-top: 10px;
+	color: var(--color-eighth);
+	font-size: 16px;
+}
+
+.btn {
+	--btn-width: 100%;
+	--btn-padding: 32px 10px;
+	margin-bottom: 40px;
+}
+
+@include md-max {
+	.tab-btns {
+		justify-content: flex-start;
+	}
+
+	.tab-btn {
+		font-size: 32px;
+		line-height: 56px;
+
+		&:not(:first-child) {
+			margin-left: 40px;
+		}
+	}
+}
+
+@include sm {
+	.tab-btns {
+		align-items: flex-start;
+		flex-direction: column;
+		margin-bottom: 32px;
+	}
+
+	.tab-btn {
+		font-size: 24px;
+		line-height: 40px;
+
+		&:not(:first-child) {
+			margin-left: 0;
+		}
+	}
+
+	.fields {
+		gap: 30px 0;
+	}
+
+	.field {
+		width: 100%;
+	}
+
+	.file-error {
+		font-size: 14px;
+	}
+}

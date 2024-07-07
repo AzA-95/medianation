@@ -1,0 +1,201 @@
+.base-design-popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 12;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(var(--color-fourth-rgb), 0.5);
+}
+
+.inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-height: 800px;
+	max-width: 1440px;
+	padding: 48px 0 0;
+	overflow-y: auto;
+	background: #fff;
+	scrollbar-width: thin;
+	scrollbar-color: #e9330b transparent;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 6px;
+		background: #e9330b;
+	}
+}
+
+.close-btn {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0.26px;
+	padding: 32px 58px;
+	text-transform: uppercase;
+	background: #323232;
+
+	&::after {
+		content: '';
+		flex-shrink: 0;
+		width: 10px;
+		height: 10px;
+		margin-top: -2px;
+		margin-left: 4px;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.927 1.14599L7.86389 0.0828856L4.50237 3.44441L1.14336 0.0854013L0.0849183 1.14384L3.44393 4.50285L0.0833319 7.86345L1.14644 8.92655L4.50703 5.56595L7.86626 8.92519L8.92471 7.86675L5.56547 4.50751L8.927 1.14599Z' fill='white'/%3E%3C/svg%3E")
+			no-repeat;
+		background-size: contain;
+	}
+}
+
+.base-container {
+	height: 100%;
+}
+
+.content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	// Нужен для нижнего пробела когда до скролят до конца чтобы был нижний пробел(паддинг)
+	padding-bottom: 48px;
+}
+
+.title {
+	max-width: 85%;
+	color: #121212;
+	font-size: 64px;
+	font-weight: 500;
+	line-height: 112.5%;
+	letter-spacing: -1.28px;
+	margin: 0 0 48px;
+}
+
+.pic {
+	flex-grow: 1;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+
+		@include lg-min {
+			width: 100%;
+		}
+	}
+
+	.pic-big {
+		display: block;
+	}
+
+	&-small {
+		display: none;
+	}
+}
+
+.btn-wrap {
+	position: sticky;
+	left: 0;
+	bottom: 16px;
+}
+
+// postion: absolute нужен чтобы position: sticky не занимал высоту контента
+.btn {
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	width: 320px;
+	--btn-width: 100%;
+	--btn-padding: 22px;
+}
+
+@include md-max {
+	.inner {
+		max-height: none;
+	}
+
+	.close-btn {
+		font-size: 0;
+		line-height: 0;
+		letter-spacing: 0;
+		padding: 20px;
+
+		&::after {
+			margin: 0;
+			width: 32px;
+			height: 32px;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Crect x='5.41406' y='4' width='32' height='2' transform='rotate(45 5.41406 4)' fill='white'/%3E%3Crect x='4.00195' y='26.6274' width='32' height='2' transform='rotate(-45 4.00195 26.6274)' fill='white'/%3E%3C/svg%3E")
+				no-repeat;
+			background-size: contain;
+		}
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 123.077%;
+		letter-spacing: -1.04px;
+		margin-bottom: 32px;
+	}
+}
+
+@include sm {
+	.inner {
+		padding-top: 24px;
+	}
+
+	.content {
+		padding-bottom: 24px;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 118.519%;
+		letter-spacing: -0.54px;
+		margin-bottom: 32px;
+	}
+
+	.pic {
+		&-big {
+			display: none;
+		}
+
+		&-small {
+			display: block;
+		}
+	}
+
+	.btn {
+		width: 100%;
+		bottom: 8px;
+
+		.offer-btn {
+			width: 100%;
+			padding: 20px 10px;
+		}
+	}
+}

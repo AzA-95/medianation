@@ -1,0 +1,113 @@
+.base-clients-slider {
+	margin: var(--vertical-indent) 0 100px;
+}
+
+.container {
+	overflow: hidden;
+}
+
+.title {
+	color: var(--color-first);
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 74px;
+	margin: 0 0 50px;
+}
+
+.slider {
+	position: relative;
+
+	:deep() {
+		.swiper {
+			overflow: visible;
+		}
+
+		.swiper-wrapper {
+			align-items: center;
+		}
+
+		.swiper-slide {
+			width: auto;
+			height: auto;
+
+			&:not(:last-child) {
+				margin-right: 98px;
+			}
+		}
+	}
+}
+
+.pic {
+	--img-max-width: 412px;
+	--img-max-height: 175px;
+	max-width: var(--img-max-width);
+	max-height: var(--img-max-height);
+	user-select: none;
+
+	&:not([data-lazy='loaded']) {
+		@include loading;
+	}
+
+	img {
+		// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+		--ratio: min(
+			1px,
+			var(--img-max-width) / var(--img-width),
+			var(--img-max-height) / var(--img-height)
+		);
+		display: block;
+		width: calc(var(--img-width) * var(--ratio, 1px));
+		height: calc(var(--img-height) * var(--ratio, 1px));
+		// фолбек если css свойство min не подерживается
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+@include md {
+	.base-clients-slider {
+		margin: var(--vertical-indent) 0 80px;
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 60px;
+	}
+
+	.slider {
+		:deep() {
+			.swiper-slide {
+				&:not(:last-child) {
+					margin-right: 60px;
+				}
+			}
+		}
+	}
+}
+
+@include sm {
+	.base-clients-slider {
+		margin: var(--vertical-indent) 0 50px;
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		margin-bottom: 40px;
+	}
+
+	.slider {
+		:deep() {
+			.swiper-slide {
+				&:not(:last-child) {
+					margin-right: 20px;
+				}
+			}
+		}
+	}
+
+	.pic {
+		--img-max-width: 212px;
+		--img-max-height: 62px;
+	}
+}

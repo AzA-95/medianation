@@ -1,0 +1,83 @@
+.base-file-input-resume {
+	position: relative;
+	line-height: 1;
+
+	&.disabled {
+		pointer-events: none;
+	}
+}
+
+.btn {
+	position: relative;
+}
+
+.input {
+	cursor: pointer;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	line-height: 0;
+
+	&::-webkit-file-upload-button {
+		cursor: pointer;
+	}
+}
+
+.format {
+	color: #8c8c8c;
+	font-size: 11px;
+	margin-right: 8px;
+}
+
+.state {
+	pointer-events: none;
+	position: relative;
+	font-size: 11px;
+	line-height: 1;
+	border-bottom: 1px dashed #434343;
+
+	&_success {
+		color: green;
+		border-color: green;
+	}
+}
+
+@include sm {
+	.base-file-input-resume {
+		width: 20px;
+		height: 22px;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: get-svg-icon('clip', 'color-second') no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+
+		&.selected::before {
+			background-image: get-svg-icon('clip', 'color-eighth');
+		}
+	}
+
+	.format {
+		display: none;
+	}
+
+	.btn {
+		position: static;
+	}
+
+	.state {
+		display: none;
+	}
+}

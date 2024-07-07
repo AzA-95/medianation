@@ -1,0 +1,77 @@
+.base-copy-btn {
+	position: relative;
+	cursor: pointer;
+}
+
+.tooltip {
+	pointer-events: none;
+	opacity: 0;
+	color: var(--color-forty-eighth);
+	width: 256px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 12px);
+	z-index: 1;
+	font-size: 18px;
+	padding: 8px;
+	border-radius: 8px;
+	background: var(--color-first);
+	transition: opacity 0.3s;
+	transform: translateX(-50%);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: var(--color-first) transparent transparent transparent;
+	}
+
+	&::after {
+		content: '';
+		position: relative;
+		top: 1px;
+		width: 12px;
+		height: 10px;
+		margin-left: 6px;
+		background: get-svg-icon('success', 'color-forty-eighth') no-repeat;
+		background-size: contain;
+	}
+
+	&.active {
+		pointer-events: all;
+		opacity: 1;
+	}
+}
+
+.input {
+	position: absolute;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+@include md-max {
+	.tooltip {
+		width: auto;
+		font-size: 12px;
+		line-height: normal;
+		padding: 8px 12px;
+		border-radius: 6px;
+		white-space: nowrap;
+
+		&::after {
+			width: 10px;
+			height: 10px;
+		}
+	}
+}

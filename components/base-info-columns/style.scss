@@ -1,0 +1,135 @@
+.base-info-columns {
+	.cols {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 calc(var(--horizontal-indent) * -1);
+	}
+
+	.col {
+		max-width: 50%;
+		width: 33.333333%;
+		padding: 63px var(--horizontal-indent) 72px;
+		border-right: 1px solid var(--color-thirty-first);
+		border-bottom: 1px solid var(--color-thirty-first);
+
+		&-title {
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			margin-bottom: 14px;
+		}
+
+		&-text {
+			font-size: 20px;
+			line-height: 28px;
+			letter-spacing: -0.01em;
+			margin-bottom: 34px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&-list {
+			font-size: 17px;
+			line-height: 26px;
+			hyphens: auto;
+
+			:deep() {
+				p {
+					margin: 0;
+
+					&:not(:last-child) {
+						margin-bottom: 16px;
+					}
+				}
+
+				ul {
+					padding: 0;
+					margin: 0 0 0 -16px;
+					list-style: none;
+
+					&:not(:last-child) {
+						margin-bottom: 16px;
+					}
+
+					li {
+						display: flex;
+
+						&:not(:last-child) {
+							margin-bottom: 16px;
+						}
+
+						&::before {
+							content: '';
+							position: relative;
+							top: 0.6em;
+							width: 5px;
+							height: 5px;
+							flex-shrink: 0;
+							margin-right: 12px;
+							background: var(--color-eighth);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include lg {
+		.col {
+			padding: 63px var(--horizontal-indent);
+		}
+	}
+
+	@include md {
+		.col {
+			width: 100%;
+			max-width: none;
+			padding: 48px var(--horizontal-indent);
+
+			&-text {
+				margin-bottom: 30px;
+			}
+		}
+	}
+
+	@include sm {
+		.col {
+			width: 100%;
+			max-width: none;
+			padding: 32px var(--horizontal-indent);
+
+			&-title {
+				font-size: 22px;
+				margin-bottom: 8px;
+			}
+
+			&-text {
+				font-size: 14px;
+				line-height: 20px;
+				margin-bottom: 10px;
+			}
+
+			&-list {
+				font-size: 13px;
+				line-height: 20px;
+
+				:deep() {
+					ul {
+						margin-left: 0;
+
+						li {
+							&::before {
+								width: 3px;
+								height: 3px;
+								margin-right: 8px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

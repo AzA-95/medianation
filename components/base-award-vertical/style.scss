@@ -1,0 +1,98 @@
+.photo {
+	display: flex;
+	align-items: center;
+	margin-bottom: 16px;
+
+	// span нужен чтобы подстраивался под ширину и высоту картики
+	// так как photo может иметь минимальную высоту больше чем картинка(смотри data-match)
+	span.lazy:not([data-lazy='loaded']) {
+		@include loading;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	img {
+		--img-max-width: 150px;
+		--img-max-height: var(--award-img-max-height, 96px);
+		// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+		--ratio: min(
+			1px,
+			var(--img-max-width) / var(--img-width),
+			var(--img-max-height) / var(--img-height)
+		);
+		display: block;
+		width: calc(var(--img-width) * var(--ratio, 1px));
+		height: calc(var(--img-height) * var(--ratio, 1px));
+		// фолбек если css свойство min не подерживается
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+.name {
+	color: var(--color-first);
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 15px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	margin-bottom: 8px;
+
+	.base-award-vertical_white & {
+		color: var(--color-fifth);
+	}
+}
+
+.text {
+	opacity: 0.7;
+	color: var(--color-second);
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: -0.01em;
+
+	.base-award-vertical_white & {
+		color: var(--color-fifth);
+	}
+}
+
+@include lg-min {
+	.base-award-vertical_small .name,
+	.base-award-vertical_small .text {
+		font-size: 13px;
+	}
+}
+
+@include lg-max {
+	.base-award-vertical_small .name,
+	.base-award-vertical_small .text {
+		font-size: 12px;
+	}
+}
+
+@include md-max {
+	.base-award-vertical_small {
+		.text {
+			font-size: 11px;
+		}
+	}
+}
+
+@include sm {
+	.photo {
+		img {
+			--img-max-height: var(--award-img-max-height, 64px);
+		}
+	}
+
+	.base-award-vertical:not(.base-award-vertical_sm-fz-bigger) {
+		.name {
+			font-size: 12px;
+			line-height: 13px;
+		}
+
+		.text {
+			font-size: 12px;
+			line-height: 16px;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+import { defineEventHandler } from 'h3';
+
+export default defineEventHandler((event) => {
+	console.log('exec');
+
+	return {
+		hello: 'world 5',
+	};
+});

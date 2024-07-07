@@ -1,0 +1,324 @@
+.base-results-our-works {
+	padding: var(--vertical-indent) 0 0;
+}
+
+.head {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 64px;
+}
+
+.title {
+	max-width: 468px;
+	color: var(--color-third);
+	font-size: 64px;
+	font-weight: 500;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	margin: 0;
+}
+
+.top-desc {
+	flex-shrink: 0;
+	width: 49%;
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+}
+
+.row {
+	position: relative;
+	display: flex;
+	padding-top: 64px;
+	padding-bottom: 112px;
+	border-top: 1px solid rgba(var(--color-first-rgb), 0.2);
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 1px;
+		height: 100%;
+		background: rgba(var(--color-first-rgb), 0.2);
+	}
+}
+
+.col {
+	width: 50%;
+
+	&:nth-child(1) {
+		padding-right: 74px;
+	}
+
+	&:nth-child(2) {
+		padding-top: 64px;
+		padding-left: 74px;
+	}
+}
+
+.article-block-wrap {
+	padding-bottom: 48px;
+	margin-bottom: 48px;
+	border-bottom: 1px solid rgba(var(--color-first-rgb), 0.2);
+
+	@include md-min {
+		&:last-child {
+			border-bottom: 0;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+	}
+}
+
+.article-block {
+	&__photo {
+		position: relative;
+		max-height: 424px;
+		overflow: hidden;
+		margin-bottom: 40px;
+
+		&::before {
+			content: '';
+			display: block;
+			padding-top: 63%;
+		}
+
+		a,
+		span {
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			&:not([data-lazy='loaded']) {
+				@include loading;
+				position: absolute;
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__title {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.33;
+		letter-spacing: -0.02em;
+		margin-bottom: 24px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		span,
+		a {
+			cursor: pointer;
+			color: inherit;
+			display: flex;
+			text-decoration: none;
+
+			&::after {
+				content: '';
+				width: 21px;
+				height: 11px;
+				flex-shrink: 0;
+				padding-left: 10px;
+				margin-top: 12px;
+				margin-left: auto;
+				background: get-svg-icon('link-arrow', 'color-first') no-repeat;
+				background-position: center right;
+				background-size: contain;
+			}
+
+			@include hover {
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+
+	&__desc {
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: -0.01em;
+		margin-bottom: 24px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__benefits {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px 48px;
+		margin-bottom: 24px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__benefit {
+		width: calc(50% - (48px / 2));
+	}
+
+	&__awards {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px 48px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__award {
+		width: calc(50% - (48px / 2));
+	}
+}
+
+@include md {
+	.base-results-our-works {
+		padding: var(--vertical-indent) 0;
+	}
+
+	.head {
+		flex-wrap: wrap;
+		margin-bottom: 48px;
+	}
+
+	.title {
+		width: 100%;
+		max-width: none;
+		font-size: 52px;
+		line-height: 1.23;
+		margin-bottom: 24px;
+	}
+
+	.top-desc {
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.row {
+		padding: 0;
+		border: none;
+		flex-wrap: wrap;
+
+		&::after {
+			content: none;
+		}
+	}
+
+	.col {
+		width: 100%;
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			padding: 0;
+		}
+	}
+
+	.col:last-child .article-block-wrap:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+}
+
+@include sm {
+	.base-results-our-works {
+		padding: var(--vertical-indent) 0;
+	}
+
+	.head {
+		flex-wrap: wrap;
+		margin-bottom: 40px;
+	}
+
+	.title {
+		max-width: none;
+		width: 100%;
+		font-size: 27px;
+		line-height: 1.2;
+		margin-bottom: 16px;
+	}
+
+	.top-desc {
+		width: 100%;
+		font-size: 16px;
+	}
+
+	.row {
+		padding: 0;
+		flex-wrap: wrap;
+
+		&::after {
+			content: none;
+		}
+	}
+
+	.col {
+		width: 100%;
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			padding: 0;
+		}
+	}
+
+	.article-block-wrap {
+		padding-bottom: 40px;
+		margin-bottom: 40px;
+	}
+
+	.col:last-child .article-block-wrap:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+
+	.article-block {
+		&__photo {
+			margin-bottom: 24px;
+		}
+
+		&__title {
+			font-size: 22px;
+			line-height: 1.45;
+			margin-bottom: 16px;
+		}
+
+		&__desc {
+			margin-bottom: 16px;
+		}
+
+		&__benefits {
+			gap: 16px 0;
+			margin-bottom: 40px;
+		}
+
+		&__benefit {
+			width: 100%;
+		}
+
+		&__awards {
+			gap: 16px 0;
+			margin-bottom: 40px;
+		}
+
+		&__award {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"ignorePatterns": ["^((?!(structure/components/)).)*$"],
+	"structure": {
+		"children": [
+			{
+				"name": "components",
+				"children": [
+					{
+						"name": "/^([a-z]|\\d)+\\-([a-z]|\\d)+([-][a-z0-9]+)*$/",
+						"children": [
+							{
+								"name": "/^${{kebab-case}}$/",
+								"children": [
+									{
+										"name": "/^${{kebab-case}}$/",
+										"extension": "*"
+									}
+								]
+							},
+							{
+								"name": "/^index(.vue)?$/",
+								"extension": ".vue"
+							},
+							{
+								"name": "/^style(.scss)?$/",
+								"extension": ".scss"
+							},
+							{
+								"name": "/^type(.ts)?$/",
+								"extension": ".ts"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,22 @@
+.page-top {
+	margin-bottom: 40px;
+
+	@include sm {
+		margin-bottom: 20px;
+	}
+}
+
+.content {
+	padding: var(--vertical-indent) 0;
+	background: var(--color-fifth);
+}
+
+.tags {
+	margin-bottom: 64px;
+}
+
+@include md-max {
+	.questions-with-answers {
+		margin: 0 calc(var(--horizontal-indent) * -1);
+	}
+}

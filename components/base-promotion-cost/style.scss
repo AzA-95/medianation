@@ -1,0 +1,275 @@
+.base-promotion-cost {
+	overflow: hidden;
+	background: var(--color-third);
+}
+
+.inner {
+	position: relative;
+	padding: var(--vertical-indent) 0;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: -266px;
+		bottom: 0;
+		width: 758px;
+		height: 758px;
+		transform: translateY(50%);
+		filter: blur(126px);
+		background: var(--color-eighth);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 36px;
+		bottom: 0;
+		width: 397px;
+		height: 379px;
+		background: url('./images/sale.png') no-repeat;
+		background-size: contain;
+	}
+}
+
+.row {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.col {
+	&:nth-child(1) {
+		max-width: 468px;
+		padding-bottom: 448px;
+	}
+
+	&:nth-child(2) {
+		width: 57.64%;
+	}
+}
+
+.title {
+	color: var(--color-fifth);
+	font-size: 64px;
+	font-weight: 500;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	margin: 0 0 32px;
+}
+
+.desc {
+	color: rgba(var(--color-fifth-rgb), 0.7);
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+
+	span {
+		display: block;
+		margin-bottom: 20px;
+	}
+}
+
+.service {
+	display: flex;
+	padding: 32px 24px;
+	border-top: 1px solid var(--color-first);
+
+	&__category {
+		flex-shrink: 0;
+		width: 257px;
+		color: rgba(var(--color-fifth-rgb), 0.5);
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 19px;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+
+	&__desc {
+		flex-grow: 1;
+		margin-top: -4px;
+		margin-left: 16px;
+	}
+
+	&__name {
+		color: var(--color-fifth);
+		font-size: 24px;
+		line-height: 32px;
+		margin-bottom: 10px;
+
+		a {
+			display: flex;
+			color: inherit;
+			text-decoration: none;
+
+			&::after {
+				content: '';
+				width: 21px;
+				height: 11px;
+				margin-top: 12px;
+				margin-left: auto;
+				background: get-svg-icon('link-arrow', 'color-fifth') no-repeat;
+				background-position: center right;
+				background-size: contain;
+			}
+
+			@include hover {
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+
+	&__price {
+		color: rgba(var(--color-fifth-rgb), 0.9);
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 35px;
+		letter-spacing: -0.01em;
+	}
+}
+
+@include lg {
+	.col {
+		&:nth-child(1) {
+			max-width: 458px;
+		}
+
+		&:nth-child(2) {
+			width: 56.54%;
+		}
+	}
+}
+
+@include md {
+	.inner {
+		padding: var(--vertical-indent) 0 355px;
+
+		&::before {
+			left: 50%;
+			width: 562px;
+			height: 562px;
+			transform: translate(-50%, 50%);
+		}
+
+		&::after {
+			left: 50%;
+			width: 317px;
+			height: 307px;
+			transform: translateX(-50%);
+			background-size: 100% auto;
+		}
+	}
+
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.col {
+		&:nth-child(1) {
+			width: 100%;
+			max-width: none;
+			padding-bottom: 0;
+			margin-bottom: 48px;
+		}
+
+		&:nth-child(2) {
+			width: 100%;
+		}
+	}
+
+	.title {
+		font-size: 52px;
+		line-height: 1.23;
+		margin-bottom: 24px;
+	}
+
+	.desc {
+		font-size: 18px;
+	}
+}
+
+@include sm {
+	.inner {
+		padding: var(--vertical-indent) 0 240px;
+
+		&::before {
+			left: 50%;
+			width: 375px;
+			height: 375px;
+			transform: translate(-50%, 50%);
+		}
+
+		&::after {
+			left: 50%;
+			width: 207px;
+			height: 201px;
+			transform: translateX(-50%);
+			background-size: 100% auto;
+		}
+	}
+
+	.row {
+		flex-wrap: wrap;
+	}
+
+	.col {
+		&:nth-child(1) {
+			width: 100%;
+			max-width: none;
+			padding-bottom: 0;
+			margin-bottom: 40px;
+		}
+
+		&:nth-child(2) {
+			width: 100%;
+		}
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 1.2;
+		margin-bottom: 16px;
+	}
+
+	.desc {
+		font-size: 16px;
+	}
+
+	.service {
+		flex-wrap: wrap;
+		padding: 24px 0;
+
+		&__category {
+			width: 100%;
+			font-size: 12px;
+			line-height: 13px;
+			margin-bottom: 16px;
+		}
+
+		&__desc {
+			width: 100%;
+			margin-top: 0;
+			margin-left: 0;
+		}
+
+		&__name {
+			font-size: 20px;
+			line-height: 24px;
+
+			a {
+				&::after {
+					margin-top: 8px;
+				}
+			}
+		}
+
+		&__price {
+			font-size: 24px;
+			line-height: 1;
+		}
+	}
+}

@@ -1,0 +1,83 @@
+// Не менять название переменой, так как используется в функции get-svg-icon
+// в /assets/scss/svg-icon.scss
+$global-colors: (
+	'color-first': #2d2d2d,
+	'color-second': #434343,
+	'color-third': #121212,
+	'color-fourth': #000,
+	'color-fifth': #fff,
+	'color-sixth': #f9f9f9,
+	'color-seventh': #ececec,
+	'color-eighth': #e9330b,
+	'color-ninth': #ff461e,
+	'color-tenth': #1b1b1e,
+	'color-eleventh': #0c0c0e,
+	'color-twelfth': #181818,
+	'color-thirteenth': #fcfcfc,
+	'color-fourteenth': #f1f1f1,
+	'color-fifteenth': #f2f2f2,
+	'color-sixteenth': #f5f5f5,
+	'color-seventeenth': #f6f6f6,
+	'color-eighteenth': #fdfdfd,
+	'color-nineteenth': #e8e8e8,
+	'color-twentieth': #efefef,
+	'color-twenty-first': #323232,
+	'color-twenty-second': #212127,
+	'color-twenty-third': #232327,
+	'color-twenty-fourth': #141417,
+	'color-twenty-fifth': #151515,
+	'color-twenty-sixth': #070707,
+	'color-twenty-seventh': #ff2e00,
+	'color-twenty-eighth': #c52c0b,
+	'color-twenty-ninth': #f05a29,
+	'color-thirtieth': #f39200,
+	'color-thirty-first': #ddd,
+	'color-thirty-second': #c4c4c4,
+	'color-thirty-third': #07f,
+	'color-thirty-fourth': #3a84f3,
+	'color-thirty-fifth': #2477f2,
+	'color-thirty-sixth': #0061d4,
+	'color-thirty-seventh': #8000e5,
+	'color-thirty-eigth': #a6a6a6,
+	'color-thirty-ninth': #ea4b27,
+	'color-forty': #cb2500,
+	'color-forty-first': #8fc100,
+	'color-forty-second': #d9d9d9,
+	'color-forty-third': #e5e5e5,
+	'color-forty-fourth': #f70168,
+	'color-forty-five': #09238e,
+	'color-forty-sixth': #d3d3d3,
+	'color-forty-seventh': #ea4623,
+	'color-forty-eighth': #f7f7fa,
+	'color-forty-ninth': #3588f2,
+);
+
+@function hex-to-rgb($hex) {
+	@return red($hex), green($hex), blue($hex);
+}
+
+:root {
+	--header-height: 80px;
+	--header-form-width: 788;
+	--vertical-indent: 64px;
+	--horizontal-indent: 74px;
+	--max-width-content: 1600px;
+
+	@if $global-colors {
+		@each $key, $value in $global-colors {
+			--#{$key}: #{$value};
+			--#{$key}-rgb: #{hex-to-rgb($value)};
+		}
+	}
+
+	@include md {
+		--vertical-indent: 48px;
+		--horizontal-indent: 50px;
+	}
+
+	@include sm {
+		--header-height: 72px;
+		--vertical-indent: 40px;
+		--horizontal-indent: 25px;
+	}
+}

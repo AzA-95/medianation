@@ -1,0 +1,24 @@
+.base-form-shadow {
+	@include md-min {
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		z-index: 3;
+		width: 100%;
+		height: 100%;
+		transition: 0.3s;
+		background-color: var(--color-fourth);
+
+		.wrapper.active & {
+			pointer-events: all;
+			opacity: 0.5;
+		}
+
+		.menu-light-color .wrapper__inner > & {
+			top: var(--header-height);
+			height: calc(100% - var(--header-height));
+		}
+	}
+}

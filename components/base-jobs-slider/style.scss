@@ -1,0 +1,238 @@
+.base-jobs-slider {
+	overflow: hidden;
+	margin: var(--vertical-indent) 0 120px;
+}
+
+.title {
+	color: #2d2d2d;
+	font-size: 68px;
+	font-weight: 400;
+	line-height: 70px;
+	letter-spacing: -0.02em;
+	margin: 0 0 72px;
+}
+
+.prefix {
+	margin: 0 10px;
+}
+
+.city {
+	position: relative;
+	cursor: pointer;
+	color: #a7a7a7;
+	line-height: normal;
+	letter-spacing: -1.36px;
+	border-bottom: 4px dashed #d0d0d0;
+
+	&.active {
+		cursor: auto;
+		color: #e9330b;
+		border-color: transparent;
+
+		&::after {
+			content: none;
+		}
+	}
+}
+
+.slider {
+	position: relative;
+	margin: 0 -45px 80px;
+
+	:deep() {
+		.swiper-slide {
+			width: 33.33333%;
+			padding: 0 45px;
+		}
+	}
+}
+
+.job {
+	&__title {
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 40px;
+		letter-spacing: -0.02em;
+		margin-bottom: 20px;
+	}
+
+	&__text {
+		font-size: 17px;
+		line-height: 28px;
+		letter-spacing: -0.01em;
+		margin-bottom: 35px;
+	}
+
+	&__link {
+		color: inherit;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		width: fit-content;
+		font-size: 17px;
+		line-height: 28px;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+
+		&::after {
+			content: '';
+			width: 31px;
+			height: 14px;
+			margin: -2px 0 0 30px;
+			background: get-svg-icon('line-arrow-right', #e9330b) no-repeat;
+			background-size: contain;
+			transition: margin 0.2s ease-in;
+		}
+
+		&:hover::after {
+			margin-left: 40px;
+		}
+	}
+}
+
+.bottom {
+	gap: 84px;
+	display: flex;
+	align-items: center;
+}
+
+.info-title {
+	flex-shrink: 0;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 39.6px;
+	letter-spacing: -0.72px;
+}
+
+.btn {
+	--btn-width: 328px;
+	--btn-padding: 32px 15px;
+}
+
+@include md {
+	.base-jobs-slider {
+		margin-bottom: 80px;
+	}
+
+	.title {
+		font-size: 42px;
+		margin-bottom: 50px;
+	}
+
+	.slider {
+		margin: 0 -40px 50px;
+
+		:deep() {
+			.swiper-slide {
+				width: 50%;
+				padding: 0 40px;
+			}
+		}
+	}
+
+	.job {
+		&__title {
+			font-size: 22px;
+			line-height: 24px;
+		}
+
+		&__text {
+			font-size: 15px;
+			line-height: 22px;
+		}
+
+		&__link {
+			font-size: 15px;
+
+			&::after {
+				margin-left: 18px;
+			}
+		}
+	}
+
+	.bottom {
+		gap: 40px;
+	}
+
+	.info-title {
+		font-size: 22px;
+		font-weight: 500;
+		line-height: 28px;
+		letter-spacing: -0.02em;
+	}
+
+	.btn {
+		--btn-padding: 20px;
+	}
+}
+
+@include sm {
+	.base-jobs-slider {
+		margin-bottom: var(--vertical-indent);
+	}
+
+	.title {
+		font-size: 27px;
+		line-height: 32px;
+		margin-bottom: 32px;
+	}
+
+	.slider {
+		margin: 0 0 40px;
+
+		:deep() {
+			.swiper-wrapper {
+				display: block;
+			}
+
+			.swiper-slide {
+				width: 100%;
+				padding: 0;
+
+				&:not(:last-child) {
+					margin-bottom: 40px;
+				}
+			}
+		}
+	}
+
+	.job {
+		&__title {
+			font-size: 22px;
+			line-height: 24px;
+			margin-bottom: 12px;
+		}
+
+		&__text {
+			font-size: 15px;
+			line-height: 22px;
+			margin-bottom: 12px;
+		}
+
+		&__link {
+			font-size: 15px;
+
+			&::after {
+				margin-top: 0;
+				margin-left: 18px;
+			}
+		}
+	}
+
+	.bottom {
+		display: block;
+	}
+
+	.info-title {
+		font-size: 22px;
+		font-weight: 500;
+		line-height: 28px;
+		letter-spacing: -0.02em;
+		margin-bottom: 18px;
+	}
+
+	.btn {
+		--btn-width: 100%;
+		--btn-padding: 20px;
+	}
+}

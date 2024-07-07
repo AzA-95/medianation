@@ -1,0 +1,47 @@
+.base-certificate {
+	position: relative;
+
+	.photo {
+		display: flex;
+		align-items: center;
+		--img-max-width: var(--certificate-img-max-width, 256px);
+		--img-max-height: var(--certificate-img-max-height, 96px);
+		height: var(--img-max-height);
+		user-select: none;
+
+		&:not([data-lazy='loaded']) {
+			@include loading;
+		}
+
+		img {
+			margin: 0 auto;
+			// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+			--ratio: min(
+				1px,
+				var(--img-max-width) / var(--img-width),
+				var(--img-max-height) / var(--img-height)
+			);
+			display: block;
+			width: calc(var(--img-width) * var(--ratio, 1px));
+			height: calc(var(--img-height) * var(--ratio, 1px));
+			// фолбек если css свойство min не подерживается
+			max-width: 100%;
+			max-height: var(--img-max-height);
+		}
+	}
+
+	.full-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	@include sm {
+		.photo {
+			--img-max-width: var(--certificate-img-max-width, 128px);
+			--img-max-height: var(--certificate-img-max-height, 48px);
+		}
+	}
+}

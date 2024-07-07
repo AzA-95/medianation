@@ -1,0 +1,90 @@
+.base-socials {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 30px 52px;
+
+	&_big {
+		gap: 30px 100px;
+	}
+}
+
+.social-item {
+	a {
+		display: block;
+		width: 32px;
+		height: 32px;
+		text-decoration: none;
+		--fill: var(--color-fourth);
+
+		.base-socials_footer & {
+			--fill: var(--color-fifth);
+		}
+
+		.base-socials_big & {
+			width: 48px;
+			height: 48px;
+		}
+
+		@include hover {
+			&:hover {
+				--fill: var(--color-eighth);
+			}
+		}
+	}
+
+	:deep(svg) {
+		transition: 0.2s;
+	}
+}
+
+@include lg-min {
+	.base-socials {
+		&_footer {
+			gap: 30px 40px;
+		}
+	}
+}
+
+@include md {
+	.base-socials {
+		&_big {
+			gap: 20px 60px;
+		}
+	}
+
+	.social-item {
+		a {
+			.base-socials_big & {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+}
+
+@include sm {
+	.base-socials {
+		gap: 20px 40px;
+
+		&_big {
+			gap: 20px 48px;
+		}
+
+		&_footer {
+			justify-content: space-between;
+		}
+	}
+
+	.social-item {
+		a {
+			width: 24px;
+			height: 24px;
+
+			.base-socials_big & {
+				width: 24px;
+				height: 24px;
+			}
+		}
+	}
+}

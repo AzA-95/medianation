@@ -1,0 +1,220 @@
+.row {
+	display: flex;
+	background: var(--color-twentieth);
+	margin: 0 calc(var(--horizontal-indent) * -1);
+}
+
+.client {
+	width: 516px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	padding: 72px 98px;
+
+	&__pic {
+		text-align: center;
+		--img-max-width: 320px;
+		--img-max-height: 80px;
+
+		&:not([data-lazy='loaded']) {
+			@include loading;
+		}
+
+		img {
+			// Нужен чтобы картинка подстраивалась под ограниченую ширину и высоту родителя без прыжков(При загрузке)
+			--ratio: min(
+				1px,
+				var(--img-max-width) / var(--img-width),
+				var(--img-max-height) / var(--img-height)
+			);
+			display: block;
+			width: calc(var(--img-width) * var(--ratio, 1px));
+			height: calc(var(--img-height) * var(--ratio, 1px));
+			// фолбек если css свойство min не подерживается
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	&__info {
+		margin-top: 40px;
+		color: var(--color-eighth);
+		font-size: 32px;
+		line-height: normal;
+		text-align: center;
+		letter-spacing: -0.02em;
+	}
+
+	&__link {
+		color: inherit;
+		word-break: break-word;
+		text-decoration: none;
+
+		@include hover {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.cases {
+	flex-grow: 1;
+	padding: 64px 72px;
+
+	&__caption {
+		opacity: 0.5;
+		color: var(color-twenty-fourth);
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 22px;
+		letter-spacing: -0.01em;
+		margin-bottom: 22px;
+	}
+
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 22px;
+		}
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		color: var(--color-twenty-fourth);
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 22px;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+
+		&::after {
+			content: '';
+			flex-shrink: 0;
+			width: 10px;
+			height: 10px;
+			margin-left: 10px;
+			background: get-svg-icon('link-arrow', 'color-twenty-fourth')
+				no-repeat;
+			background-size: contain;
+		}
+
+		@include hover {
+			&:hover {
+				color: var(--color-eighth);
+
+				&::after {
+					background-image: get-svg-icon(
+						'link-arrow',
+						'color-eighth'
+					);
+				}
+			}
+		}
+	}
+}
+
+@include lg {
+	.client {
+		width: 416px;
+		padding: 72px 52px;
+
+		&__pic {
+			--img-max-width: 312px;
+		}
+	}
+}
+
+@include md {
+	.client {
+		width: 288px;
+		padding: 50px 64px;
+
+		&__pic {
+			--img-max-width: 160px;
+		}
+
+		&__info {
+			margin-top: 27px;
+			font-size: 22px;
+		}
+	}
+
+	.cases {
+		padding: 40px 50px;
+
+		&__caption {
+			font-size: 16px;
+			line-height: 18px;
+			margin-bottom: 16px;
+		}
+
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
+		}
+
+		&__link {
+			font-size: 16px;
+			line-height: 18px;
+
+			&::after {
+				width: 8px;
+				height: 8px;
+				margin-left: 4px;
+			}
+		}
+	}
+}
+
+@include sm {
+	.row {
+		flex-wrap: wrap;
+		padding: 25px 40px;
+	}
+
+	.client {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 16px;
+
+		&__pic {
+			--img-max-width: 160px;
+		}
+
+		&__info {
+			margin-top: 18px;
+			font-size: 22px;
+		}
+	}
+
+	.cases {
+		padding: 0;
+
+		&__caption {
+			font-size: 15px;
+			line-height: 17px;
+			margin-bottom: 17px;
+		}
+
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: 17px;
+			}
+		}
+
+		&__link {
+			font-size: 15px;
+			line-height: 17px;
+
+			&::after {
+				width: 8px;
+				height: 8px;
+				margin-left: 4px;
+			}
+		}
+	}
+}
