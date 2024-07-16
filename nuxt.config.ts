@@ -90,4 +90,7 @@ export default defineNuxtConfig({
 	experimental: {
 		appManifest: false,
 	},
+	build: {
+		transpile: ['swiper', '@fancyapps/ui'],
+	},
 });
